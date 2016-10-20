@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
-    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
     <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
+
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/leaflet_label.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -30,7 +30,6 @@
         </div>
         <div class="navbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" id="about-btn"><i class="fa fa-info-circle white"></i>&nbsp;&nbsp;About</a></li>
            <li><a href="#" id="legend-btn"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Scoring Categories</a></li>
             <li><a href="#" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
           </ul>
@@ -82,63 +81,6 @@
       </div>
     </div>
 
-    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Permanent Bicycle and Pedestrian Counts</h4>
-          </div>
-          <div class="modal-body">
-            <ul class="nav nav-tabs" id="aboutTabs">
-              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;About</a></li>
-              <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact</a></li>
-              <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
-            </ul>
-            <div class="tab-content" id="aboutTabsContent">
-              <div class="tab-pane fade active in" id="about">
-                <p>This map displays data from permanent bicycle and pedestrian counters operated by DVRPC. Trail use counters, located on <a href="http://circuittrails.org" target="_new">Circuit Trails </a>throughout the region, record use by direction and by mode (walking vs. bicycling) continuously throughout the course of a year. This interactive map provides a snapshot of this data in a simple, user-friendly format allowing users to explore counts from throughout the region. More detailed data is available <a href="http://www.dvrpc.org/asp/bikeped/" target="_new">here</a>.<br><br>
-                  
-                DVRPC also takes short-duration bicycle and pedestrian counts. Data from these counts is available <a href="http://www.dvrpc.org/webmaps/pedbikecounts/" target="_new">here.</a><br><br>
-
-                The <a href="http://www.williampennfoundation.org" target="_new">William Penn Foundation</a> and <a href="http://pecpa.org" target="_new">Pennsylvania Environmental Council</a> provided generous support for the acquisition of the counters. DVRPC personnel installed and maintain the equipment on an ongoing basis. <br><br>
-                
-                While every effort is made on the part of DVRPC to provide valid and current information, DVRPC makes no representation nor warranties, express or implied, about the validity of this information and is not to be held responsible for errors in data obtained from this website. 
-
-                </p>
-              </div>
-              <div id="disclaimer" class="tab-pane fade text-danger">
-                <p>The data provided on this site is for informational and planning purposes only.</p>
-                <p>While every effort is made on the part of DVRPC to provide valid and current information, DVRPC makes no representation or warranties, express or implied, about the validity of this information and is not to be held responsible for errors in data obtained from this website.</p> 
-              </div>
-              <div class="tab-pane fade" id="contact">
-                <p>
-                    <b>Office of Travel Monitoring</b><br/>
-                    Scott Brady, Manager <br/>
-                    (215) 238-2814 <br/>
-                    <a href="mailto:sbrady@dvrpc.org">sbrady@dvrpc.org </a> <br/>
-                <br/>
-                    Charles Henry, Traffic Counting Supervisor  <br/>
-                    (215) 238-2895 <br/>
-                    <a href="mailto:chenry@dvrpc.org">chenry@dvrpc.org</a> <br/>
-                <br/>
-                <b>Office of Environmental Planning</b><br/>
-                    Shawn Megill Legendre, Senior Research Analyst <br/>
-                    (215) 238-2934 <br/>
-                    <a href="mailto:slegendre@dvrpc.org">slegendre@dvrpc.org </a> <br/>
-                <br/>
-                <b>DVRPC Main Number:</b> (215) 592-1800
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
     <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -159,165 +101,110 @@
             <div class="modal-content" style="overflow:hidden">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">
-                        Project Category Description
-                    </h4>
+                    <h4 class="modal-title">Existing TOD Orientatio Category Description</h4>
+                    <p>The seven attributes in this category provide an overview of the existing transit, demographics, and physical context of a station area. Together, these attributes help to identify station areas where the land use and travel patterns frequently associated with TOD already exist. </p>
                 </div>
-
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xs-4">
-                            <ul id="legendTabs" class="nav nav-tabs nav-stacked nav-left">
-                                <li class="active">
-                                    <a href="#Transit" data-toggle="tab" data-bg="#3C3C3C">Roadway System Preservation</a>
-                                       <!-- <i class="icon-info-sign"></i>&nbsp;Roadway System Preservation</a> -->
-                                </li>
-                                <li>
-                                    <a href="#Job" data-toggle="tab" data-bg="#991f31">Job Access</a>
-                                </li>
-                                <li>
-                                    <a href="#rd_expTab" data-toggle="tab" data-bg="#60afa1">Roadway System Expansion</a>
-                                </li>
-                                <li>
-                                    <a href="#rd_otherTab" data-toggle="tab" data-bg="#a6c834">Roadway Other</a>
-                                </li>
-                                <li>
-                                    <a href="#tr_prTab" data-toggle="tab" data-bg="#006886">Transit System Preservation</a>
-                                </li>
-                                <li>
-                                    <a href="#tr_opTab" data-toggle="tab" data-bg="#3b8448">Transit Operational Improvements</a>
-                                </li>
-                                <li>
-                                    <a href="#tr_expTab" data-toggle="tab" data-bg="#db182e">Transit System Expansion</a>
-                                </li>
-                                 <li>
-                                    <a href="#tr_otherTab" data-toggle="tab" data-bg="#db182e">Transit Other*</a>
-                                </li>
-                                <li>
-                                    <a href="#ext_fundTab" data-toggle="tab" data-bg="#e38225">External Funded</a>
-                                </li>
-                                <li>
-                                    <a href="#bikepedTab" data-toggle="tab" data-bg="#e38225">Bike and Pedestrian*</a>
-                                </li>
-                            </ul>
+                          <ul id="legendTabs" class="nav nav-tabs nav-stacked nav-left">
+                            
+                              <li class="active">
+                                  <a href="#Transit" data-toggle="tab" data-bg="#3C3C3C">Transit Service Quality</a>
+                              </li>
+                              <li>
+                                  <a href="#Job" data-toggle="tab" data-bg="#991f31">Job Access</a>
+                              </li>
+                              <li>
+                                  <a href="#Travel" data-toggle="tab" data-bg="#60afa1">Travel Time</a>
+                              </li>
+                              <li>
+                                  <a href="#Intensity" data-toggle="tab" data-bg="#a6c834">Intensity</a>
+                              </li>
+                              <li>
+                                  <a href="#Car" data-toggle="tab" data-bg="#006886">Car Ownership</a>
+                              </li>
+                              <li>
+                                  <a href="#Non-Car" data-toggle="tab" data-bg="#3b8448">Non-Car Commuters</a>
+                              </li>
+                              <li>
+                                  <a href="#Walk" data-toggle="tab" data-bg="#db182e">Walk Score®</a>
+                              </li>
+                          </ul>
                         </div>
                         <div class="col-xs-7">
                     <div id="legendTabsContent" class="tab-content">
-
+      
                     <div class="tab-pane fade active in" id="Transit">
-                    <h4 class="modal-title" style="color:black">Roadway System Preservation</h4>
-                    <p>These projects maintain existing roadway pavement and bridge infrastructure. Needs estimates were developed using the federally required Pavement Management System and Bridge Management System databases, which track the condition of each roadway lane mile and bridge, and include needs estimates for county and local roadways and bridges that are eligible for federal aid.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#24527F">Funded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rdf_pr.png" />
-                    <p style="color:#24527F">Projects in this category are included in the fiscally constrained financial plan.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rduf_pr.png" />
-                    <p style="color:#90ABD9">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    <h4 class="modal-title" style="color:black">Transit Service Quality</h4>
+                    <p>The quality of transit service is measured using the Transit Connectivity Index (TCI) developed by the Center for Neighborhood Technology (CNT). A TCI score reflects the number of transit trips that are accessible by walking in a specific location. This measure examines the frequency and proximity of all transit routes and so this score also reflects nearby bus service.
+                    <br>            
+                    </p>
+                    <h5 class="modal-title" style="color:#24527F">Scoring</h5>
+                    <p style="color:#24527F">Higher scores are more supportive of TOD<br>
+                    4 = 39—57<br>
+                    3 = 26—38<br>
+                    2 = 20—25<br>
+                    1 = 11—19<br>
+                    Or<br> 
+                    Station areas receiving the highest scores had TCIs of 39 or greater
+                    </p>
                     </div>
 
                     <div class="tab-pane fade" id="Job">
-                    <h4 class="modal-title" style="color:black">Roadway Operational Improvements</h4>
-                    <p>These projects use physical changes or technology to improve the efficiency of the existing network. Physical improvements include intersection/interchange reconstruction, new turn lanes, and roadway realignment, to improve the functionality and safety of the roadway network. Technological improvements include the use of Intelligent Transportation Systems (ITS), incident management programs, or traffic signal upgrades.
+                    <h4 class="modal-title" style="color:black">Job Access</h4>
+                    <p>The number of jobs accessible by transit directly influences how desirable a station area is to potential residents and businesses. This attribute identifies the number of jobs accessible via a 30-minute transit ride from a given station. This data was aggregated by CNT as part of their Housing and Transportation (H+T) Affordability Index.
                     </p>    
-                    <br>
-                    <h5 class="modal-title" style="color:#24527F">Funded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rdf_op.png" />
-                    <p style="color:#24527F">Projects in this category are included in the fiscally constrained financial plan.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rduf_op.png" />
-                    <p style="color:#90ABD9">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    <h5 class="modal-title" style="color:#24527F">Scoring</h5>
+                    <p style="color:#24527F">Higher scores are more supportive of TOD<br>
+                    4 = 500,458—657,358<br>
+                    3 = 391,834—498,024<br>
+                    2 = 238,411—384,719<br>
+                    1 = 31,061—233,378<br>
+                    </p>
                     </div>
 
-                    <div class="tab-pane fade" id="rd_expTab">
-                    <h4 class="modal-title" style="color:black">Roadway System Expansion</h4>
-                    <p>These projects add capacity to the roadway network by widening or extending existing facilities, or building new roads or interchanges. The need for major regional projects was based on the projects included in the Connections 2035 Plan, a review of recent transportation and corridor studies, and a call for projects from planning partners. All roadway system expansion projects are required to be consistent with the region’s Congestion Management Process (CMP) and are evaluated to be consistent with land use, environmental, economic development, and transportation goals.</p>
+                    <div class="tab-pane fade" id="Travel">
+                    <h4 class="modal-title" style="color:black">Travel Time</h4>
+                    <p>Transit service is most attractive when travel times are competitive with driving times. This attribute is based on a ratio of transit to automobile travel time from a station area to Suburban Station in Center City Philadelphia, a central location within the region’s largest employment center. This ratio was derived using travel times from Google Maps based on a 9:00 AM arrival on a Tuesday morning. For transit trips, transfer and walking times are included. Travel time ratios of 1.0 or more reflect trips that are quicker by transit during this time period.</p>
                     <br>
-                    <h5 class="modal-title" style="color:#24527F">Funded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rdf_ex.png" />
-                    <p style="color:#24527F">Projects in this category are included in the fiscally constrained financial plan.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rduf_ex.png" />
-                    <p style="color:#90ABD9">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
-                    </div>
+                    <h5 class="modal-title" style="color:#24527F">Scoring</h5>
+                    <p>Higher scores are more supportive of TOD<br>
+                    4 = 1.0 and greater<br>
+                    3 = 0.75—0.99<br>
+                    2 = 0.50—0.74<br>
+                    1 = 0.49 and below
+                    </p>
+                     </div>
 
-                    <div class="tab-pane fade" id="rd_otherTab">
-                    <h4 class="modal-title" style="color:black">Roadway Other</h4>
-                 <!--    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5> -->
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/other_rd.png" />
+                    <div class="tab-pane fade" id="Intensity">
+                    <h4 class="modal-title" style="color:black">Intensity</h4>
                     <p>These projects include needs for miscellaneous items, such as parking facilities, drainage, environmental mitigation, Transportation Management Associations (TMAs), engineering, regional and local planning, and debt service. These needs are based on forecasting future need based on projects and costs that are included in the current Transportation Improvement Programs (TIP) for Pennsylvania and New Jersey.</p>
                     </div>
                                 
-                    <div class="tab-pane fade" id="tr_prTab">
-                    <h4>Transit System Preservation</h4>
+                    <div class="tab-pane fade" id="Car">
+                    <h4 class="modal-title" style="color:black">Car Ownership</h4>
                     <p>These projects represent needs for existing rail infrastructure, vehicle fleets, and stations. Regular vehicle track, signal, catenary, power substations, signals, vehicle overhaul and replacement, station renovations, and ADA accessibility needs were used to develop the need for each of these three categories using asset management data. </p>
                     <br>
-                    <h5 class="modal-title" style="color:#69883A">Funded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tf_pr.png" />
-                    <p style="color:#69883A">Projects in this category are included in the fiscally constrained financial plan.</p>
-                    <br> 
-                    <h5 class="modal-title" style="color:#B4CA8B">Unfunded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tuf_pr.png" />
-                    <p style="color:#B4CA8B">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    <h5 class="modal-title" style="color:#69883A">Scoring</h5>
                     </div>
 
-                    <div class="tab-pane fade" id="tr_opTab">
-                    <h4>Transit Operational Improvements</h4>
+                    <div class="tab-pane fade" id="Non-Car">
+                    <h4 class="modal-title" style="color:black">Non-Car Commuters</h4>
                     <p>These projects aim to improve the functionality of the existing system. Types of projects include real-time information systems, signal preemption, fare modernization, and double tracking and sidings to improve service frequency. The estimated needs were developed by DVRPC and regional transit agencies.</p>
                     <br>
-                    <h5 class="modal-title" style="color:#69883A">Funded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tf_op.png" />
-                    <p style="color:#69883A">Projects in this category are included in the fiscally constrained financial plan.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#B4CA8B">Unfunded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tuf_op.png" />
-                    <p style="color:#B4CA8B">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    <h5 class="modal-title" style="color:#69883A">Scoring</h5>
                     </div>
 
-                    <div class="tab-pane fade" id="tr_expTab">
-                    <h4>Transit System Expansion</h4>
+                    <div class="tab-pane fade" id="Walk">
+                    <h4 class="modal-title" style="color:black">Walk Score®</h4>
                     <p>These projects include new transit facilities, routes, and lines that the region would like to pursue. Need for this category is based on a short list of projects developed by the long-range plan subcommittee and includes projects listed in the Connections 2035 Plan and DVRPC’s Long-Range Vision for Transit Report. </p>
                     <br>
-                    <h5 class="modal-title" style="color:#69883A">Funded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tf_ex.png" />
-                    <p style="color:#69883A">Projects in this category are included in the fiscally constrained financial plan.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#B4CA8B">Unfunded</h5>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tuf_ex.png" />
-                    <p style="color:#B4CA8B">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    <h5 class="modal-title" style="color:#69883A">Scoring</h5>
                     </div>
 
-                    <div class="tab-pane fade" id="tr_otherTab">
-                    <h4>Transit Other</h4>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/other_tr.png" />
-                    <p><font style="color:grey;"><i>***These projects are not mapped.***</i></font></p>
-                    <p>A miscellaneous category that includes safety, security, coordinated human services, and debt service. Need for this category is estimated by remaining debt obligation payments and accounting for outlays over the life of the plan based on current and future expenditures.
-                    </br>    
-                    <a data-dismiss="modal" onclick="$('#UMModal').modal('show'); return false;$('#About').modal('hide');"> click here to view a list of unmapped projects</a></p>
-                    </div>
-
-                    <div class="tab-pane fade" id="ext_fundTab">
-                    <h4>External Funded</h4>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/ext_fund.png" />
-                    <p>Projects that do not receive any Federal funding. They are generally carried out by toll authorities. DVRPC coordinates with the sponsoring agency on these projects, and includes them in its air quality conformity analysis. </p>
-                    </div>
-                    
-                    <div class="tab-pane fade" id="bikepedTab">
-                    <h4>Bike and Pedestrian</h4>
-                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/bikeped.png" />
-                    <p><font style="color:grey;"><i>***These projects are not mapped.***</i></font></p>
-                    <p>Identified projects reflect the region’s desire to be more bike and pedestrian friendly. On-road needs are based on current funding levels in the Pennsylvania and New Jersey Transportation Improvement Programs, as well as additional targeted funding levels to increase the region’s investment in such facilities. Off-road needs are based on constructing all unbuilt, multiuse trails in The Circuit Regional Trail Network. Specific links of the Circuit will be funded through future iterations of the TIP.
-                    </br>    
-                    <a data-dismiss="modal" onclick="$('#UMModal').modal('show'); return false;$('#About').modal('hide');"> click here to view a list of unmapped projects</a></p>
-                    </div>
-                       
-                        
-
-                            </div>
-                        </div>
+                  </div>
+                  </div>
                     </div>
                 </div>
             </div>

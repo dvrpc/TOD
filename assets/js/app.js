@@ -4,17 +4,6 @@
         sizeLayerControl();
     });
 
-    $(document).on("click", ".feature-row", function(e) {
-        $(document).off("mouseout", ".feature-row", clearHighlight);
-        sidebarClick(parseInt($(this).attr("id"), 10));
-    });
-
-    $(document).on("mouseover", ".feature-row", function(e) {
-        highlight.clearLayers().addLayer(L.circleMarker([$(this).attr("lat"), $(this).attr("lng")], highlightStyle));
-    });
-
-    $(document).on("mouseout", ".feature-row", clearHighlight);
-
     function highlightRow(e){
     // reset rows
        $("tr").css('background-color', 'white');
@@ -24,12 +13,6 @@
         $(this).css('background-color','rgba(0, 255, 255, 0.6)');
     //    $(this).css('color', 'white');
     }
-    
-    $("#about-btn").click(function() {
-        $("#aboutModal").modal("show");
-        $(".navbar-collapse.in").collapse("hide");
-        return false;
-    });
 
     $("#full-extent-btn").click(function() {
         map.fitBounds(stations.getBounds());
@@ -45,21 +28,6 @@
 
     function sizeLayerControl() {
         $(".leaflet-control-layers").css("max-height", $("#map").height() - 50);
-    }
-
-    function clearHighlight() {
-        highlight.clearLayers();
-    }
-
-    function sidebarClick(id) {
-        var layer = stations.getLayer(id);
-        map.setView([layer.getLatLng().lat, layer.getLatLng().lng], 12);
-        layer.fire("click");
-        /* Hide sidebar and go to the map on small screens */
-        if (document.body.clientWidth <= 767) {
-            $("#sidebar").hide();
-            map.invalidateSize();
-        }
     }
 
     /* Basemap Layers */
@@ -87,22 +55,6 @@
         map.addLayer(stationsLayer);
     });
 
-    var highlight = L.geoJson(null,{
-        onEachFeature: function(feature, layer) { 
-            if (feature.properties) {
-                layer.bindLabel(feature.properties.Station_Name, {
-                    className: 'leaflet-label'
-                });
-            }
-        },
-    });
-    
-    var highlightStyle = {
-        stroke: false,
-        fillColor: "#00FFFF",
-        fillOpacity: 0.9,
-        radius: 5
-    };
 
     styleOptions = {
     //  color: "#d53e4f",
@@ -152,7 +104,7 @@
     map = L.map("map", {
         zoom: 10,
         center: [39.952473, -75.164106],
-        layers: [mapbox, DVRPC, highlight,stations],
+        layers: [mapbox, DVRPC,stations],
         zoomControl: false,
         attributionControl: false
     });
@@ -242,15 +194,10 @@
         }
     });
 
-    $("#featureModal").on("hidden.bs.modal", function(e) {
-        $(document).on("mouseout", ".feature-row", clearHighlight);
-    });
-function legendraw(value) {
-   //   e.preventDefault()
-  // event.preventDefault()
-    $('#legendModal').one('shown.bs.modal', function() {
-    $('#legendTabs a[href="#' + value + '"]').tab('show'); }).modal('show');
-}  
+    function legendraw(value) {
+        $('#legendModal').one('shown.bs.modal', function() {
+        $('#legendTabs a[href="#' + value + '"]').tab('show'); }).modal('show');
+    }  
 
     function identify(e) {
         var layer = e.target;
@@ -264,9 +211,10 @@ function legendraw(value) {
         var content4 = "<div>Future TOD Potential"
                         +"</div>"
 
-        var stationinfo = "<div>Location: <b>"+(props.MCD)+", "+(props.CNTY)+" County</b></div>"
-                            +"<div> Land Use Context: <b>"+(props.LUContext)+"</b></div>"
-                            +"<div> Station Area Type: <b>"+(props.TYPE)+"</b></div>"
+        var stationinfo = "<div> Station Area Type: <b>"+(props.TYPE)+"</b>"
+                         +" | Land Use Context: <b>"+(props.LUContext)+"</b></div>"
+                         +"<div>Location: <b>"+(props.MCD)+", "+(props.CNTY)+" County</b></div>"
+                            
 
         document.getElementById('card').innerHTML = content;
         document.getElementById('stationinfo_all').innerHTML = stationinfo;  
@@ -523,6 +471,10 @@ function legendraw(value) {
     options.series[0].data = counData;
     chart = new Highcharts.Chart(options)
  //    console.log(bikeindata);
+  $('.highcharts-xaxis-labels text, .highcharts-xaxis-labels span').click(function () {
+       // console.log(this.textContent.split(' ')[0]);
+         legendraw(this.textContent.split(' ')[0]);
+    });
     }
 
     function updatebarchartFUOV(Values) {
