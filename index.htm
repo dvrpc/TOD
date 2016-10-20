@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>DVRPC - TOD Potential v1.0</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
+    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
+    <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/leaflet_label.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-icon-container">
+            <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+            <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
+          </div>
+              <span><a class="navbar-brand" href="http://www.dvrpc.org/" target="_blank"><img src="http://www.dvrpc.org/webmaps/tcdi/images/dvrpc_logo.png" alt="DVRPC" style="max-height:30px;margin:-4px 10px -10px 0;"/></a>
+              <img  style="margin:5px 0px 0px 0px" src="assets/img/logo.png"/>   
+              </span>
+        </div>
+        <div class="navbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id="about-btn"><i class="fa fa-info-circle white"></i>&nbsp;&nbsp;About</a></li>
+           <li><a href="#" id="legend-btn"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Scoring Categories</a></li>
+            <li><a href="#" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+<!-- Start Main Body -->
+    <div id="container">
+        <div id="sidebar" class="col-sm-6">
+           <div class="row" id="barcharts"> 
+             <div id="cardclick">
+             <h2>Click on station location for detailed information</h2>
+            </div>
+             <div class="panel panel-primary" id="card">
+             </div>
+              <div id="stationinfo_all" class="stationinfo_all"></div> 
+            <div class="col-11" >
+            <div class="panel panel-primary" id="cardbikepanel">
+            <div class="panel-heading" id="cardbike"></div>
+            <div id="existingOV" class="barchart"></div>
+            <div id="existing" class="barchart"></div>
+            </div>
+            </div>
+            <div class="col-11">
+            <div class="panel panel-primary" id="cardpedpanel">
+            <div class="panel-heading" id="cardped"></div>
+            <div id="futureOV" class="barchart"></div>
+            <div id="future" class="barchart"></div>
+            </div>
+            </div> 
+          </div>
+  
+      </div>
+
+      <div id="sidebar2" class="col-sm-6">
+        <div id="map"></div>
+      </div>  
+
+ </div>     
+
+<!-- End Main Body -->
+    
+    <div id="loading">
+      <div class="loading-indicator">
+        <div class="progress progress-striped active">
+          <div class="progress-bar progress-bar-info progress-bar-full"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Permanent Bicycle and Pedestrian Counts</h4>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs" id="aboutTabs">
+              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-info-circle"></i>&nbsp;About</a></li>
+              <li><a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact</a></li>
+              <li><a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a></li>
+            </ul>
+            <div class="tab-content" id="aboutTabsContent">
+              <div class="tab-pane fade active in" id="about">
+                <p>This map displays data from permanent bicycle and pedestrian counters operated by DVRPC. Trail use counters, located on <a href="http://circuittrails.org" target="_new">Circuit Trails </a>throughout the region, record use by direction and by mode (walking vs. bicycling) continuously throughout the course of a year. This interactive map provides a snapshot of this data in a simple, user-friendly format allowing users to explore counts from throughout the region. More detailed data is available <a href="http://www.dvrpc.org/asp/bikeped/" target="_new">here</a>.<br><br>
+                  
+                DVRPC also takes short-duration bicycle and pedestrian counts. Data from these counts is available <a href="http://www.dvrpc.org/webmaps/pedbikecounts/" target="_new">here.</a><br><br>
+
+                The <a href="http://www.williampennfoundation.org" target="_new">William Penn Foundation</a> and <a href="http://pecpa.org" target="_new">Pennsylvania Environmental Council</a> provided generous support for the acquisition of the counters. DVRPC personnel installed and maintain the equipment on an ongoing basis. <br><br>
+                
+                While every effort is made on the part of DVRPC to provide valid and current information, DVRPC makes no representation nor warranties, express or implied, about the validity of this information and is not to be held responsible for errors in data obtained from this website. 
+
+                </p>
+              </div>
+              <div id="disclaimer" class="tab-pane fade text-danger">
+                <p>The data provided on this site is for informational and planning purposes only.</p>
+                <p>While every effort is made on the part of DVRPC to provide valid and current information, DVRPC makes no representation or warranties, express or implied, about the validity of this information and is not to be held responsible for errors in data obtained from this website.</p> 
+              </div>
+              <div class="tab-pane fade" id="contact">
+                <p>
+                    <b>Office of Travel Monitoring</b><br/>
+                    Scott Brady, Manager <br/>
+                    (215) 238-2814 <br/>
+                    <a href="mailto:sbrady@dvrpc.org">sbrady@dvrpc.org </a> <br/>
+                <br/>
+                    Charles Henry, Traffic Counting Supervisor  <br/>
+                    (215) 238-2895 <br/>
+                    <a href="mailto:chenry@dvrpc.org">chenry@dvrpc.org</a> <br/>
+                <br/>
+                <b>Office of Environmental Planning</b><br/>
+                    Shawn Megill Legendre, Senior Research Analyst <br/>
+                    (215) 238-2934 <br/>
+                    <a href="mailto:slegendre@dvrpc.org">slegendre@dvrpc.org </a> <br/>
+                <br/>
+                <b>DVRPC Main Number:</b> (215) 592-1800
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div id="attribution">
+             &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a></div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+   <div class="modal fade" id="legendModal">
+        <div class="modal-dialog modal-lg" style="width: 875px;">
+            <div class="modal-content" style="overflow:hidden">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">
+                        Project Category Description
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <ul id="legendTabs" class="nav nav-tabs nav-stacked nav-left">
+                                <li class="active">
+                                    <a href="#Transit" data-toggle="tab" data-bg="#3C3C3C">Roadway System Preservation</a>
+                                       <!-- <i class="icon-info-sign"></i>&nbsp;Roadway System Preservation</a> -->
+                                </li>
+                                <li>
+                                    <a href="#Job" data-toggle="tab" data-bg="#991f31">Job Access</a>
+                                </li>
+                                <li>
+                                    <a href="#rd_expTab" data-toggle="tab" data-bg="#60afa1">Roadway System Expansion</a>
+                                </li>
+                                <li>
+                                    <a href="#rd_otherTab" data-toggle="tab" data-bg="#a6c834">Roadway Other</a>
+                                </li>
+                                <li>
+                                    <a href="#tr_prTab" data-toggle="tab" data-bg="#006886">Transit System Preservation</a>
+                                </li>
+                                <li>
+                                    <a href="#tr_opTab" data-toggle="tab" data-bg="#3b8448">Transit Operational Improvements</a>
+                                </li>
+                                <li>
+                                    <a href="#tr_expTab" data-toggle="tab" data-bg="#db182e">Transit System Expansion</a>
+                                </li>
+                                 <li>
+                                    <a href="#tr_otherTab" data-toggle="tab" data-bg="#db182e">Transit Other*</a>
+                                </li>
+                                <li>
+                                    <a href="#ext_fundTab" data-toggle="tab" data-bg="#e38225">External Funded</a>
+                                </li>
+                                <li>
+                                    <a href="#bikepedTab" data-toggle="tab" data-bg="#e38225">Bike and Pedestrian*</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-7">
+                    <div id="legendTabsContent" class="tab-content">
+
+                    <div class="tab-pane fade active in" id="Transit">
+                    <h4 class="modal-title" style="color:black">Roadway System Preservation</h4>
+                    <p>These projects maintain existing roadway pavement and bridge infrastructure. Needs estimates were developed using the federally required Pavement Management System and Bridge Management System databases, which track the condition of each roadway lane mile and bridge, and include needs estimates for county and local roadways and bridges that are eligible for federal aid.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#24527F">Funded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rdf_pr.png" />
+                    <p style="color:#24527F">Projects in this category are included in the fiscally constrained financial plan.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rduf_pr.png" />
+                    <p style="color:#90ABD9">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="Job">
+                    <h4 class="modal-title" style="color:black">Roadway Operational Improvements</h4>
+                    <p>These projects use physical changes or technology to improve the efficiency of the existing network. Physical improvements include intersection/interchange reconstruction, new turn lanes, and roadway realignment, to improve the functionality and safety of the roadway network. Technological improvements include the use of Intelligent Transportation Systems (ITS), incident management programs, or traffic signal upgrades.
+                    </p>    
+                    <br>
+                    <h5 class="modal-title" style="color:#24527F">Funded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rdf_op.png" />
+                    <p style="color:#24527F">Projects in this category are included in the fiscally constrained financial plan.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rduf_op.png" />
+                    <p style="color:#90ABD9">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="rd_expTab">
+                    <h4 class="modal-title" style="color:black">Roadway System Expansion</h4>
+                    <p>These projects add capacity to the roadway network by widening or extending existing facilities, or building new roads or interchanges. The need for major regional projects was based on the projects included in the Connections 2035 Plan, a review of recent transportation and corridor studies, and a call for projects from planning partners. All roadway system expansion projects are required to be consistent with the region’s Congestion Management Process (CMP) and are evaluated to be consistent with land use, environmental, economic development, and transportation goals.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#24527F">Funded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rdf_ex.png" />
+                    <p style="color:#24527F">Projects in this category are included in the fiscally constrained financial plan.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/rduf_ex.png" />
+                    <p style="color:#90ABD9">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="rd_otherTab">
+                    <h4 class="modal-title" style="color:black">Roadway Other</h4>
+                 <!--    <h5 class="modal-title" style="color:#90ABD9">Unfunded</h5> -->
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/other_rd.png" />
+                    <p>These projects include needs for miscellaneous items, such as parking facilities, drainage, environmental mitigation, Transportation Management Associations (TMAs), engineering, regional and local planning, and debt service. These needs are based on forecasting future need based on projects and costs that are included in the current Transportation Improvement Programs (TIP) for Pennsylvania and New Jersey.</p>
+                    </div>
+                                
+                    <div class="tab-pane fade" id="tr_prTab">
+                    <h4>Transit System Preservation</h4>
+                    <p>These projects represent needs for existing rail infrastructure, vehicle fleets, and stations. Regular vehicle track, signal, catenary, power substations, signals, vehicle overhaul and replacement, station renovations, and ADA accessibility needs were used to develop the need for each of these three categories using asset management data. </p>
+                    <br>
+                    <h5 class="modal-title" style="color:#69883A">Funded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tf_pr.png" />
+                    <p style="color:#69883A">Projects in this category are included in the fiscally constrained financial plan.</p>
+                    <br> 
+                    <h5 class="modal-title" style="color:#B4CA8B">Unfunded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tuf_pr.png" />
+                    <p style="color:#B4CA8B">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="tr_opTab">
+                    <h4>Transit Operational Improvements</h4>
+                    <p>These projects aim to improve the functionality of the existing system. Types of projects include real-time information systems, signal preemption, fare modernization, and double tracking and sidings to improve service frequency. The estimated needs were developed by DVRPC and regional transit agencies.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#69883A">Funded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tf_op.png" />
+                    <p style="color:#69883A">Projects in this category are included in the fiscally constrained financial plan.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#B4CA8B">Unfunded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tuf_op.png" />
+                    <p style="color:#B4CA8B">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="tr_expTab">
+                    <h4>Transit System Expansion</h4>
+                    <p>These projects include new transit facilities, routes, and lines that the region would like to pursue. Need for this category is based on a short list of projects developed by the long-range plan subcommittee and includes projects listed in the Connections 2035 Plan and DVRPC’s Long-Range Vision for Transit Report. </p>
+                    <br>
+                    <h5 class="modal-title" style="color:#69883A">Funded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tf_ex.png" />
+                    <p style="color:#69883A">Projects in this category are included in the fiscally constrained financial plan.</p>
+                    <br>
+                    <h5 class="modal-title" style="color:#B4CA8B">Unfunded</h5>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/tuf_ex.png" />
+                    <p style="color:#B4CA8B">Projects in this category are not able to be included in the fiscally constrained financial plan, but are considered critical to achieving the Plan’s vision.</p>
+                    </div>
+
+                    <div class="tab-pane fade" id="tr_otherTab">
+                    <h4>Transit Other</h4>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/other_tr.png" />
+                    <p><font style="color:grey;"><i>***These projects are not mapped.***</i></font></p>
+                    <p>A miscellaneous category that includes safety, security, coordinated human services, and debt service. Need for this category is estimated by remaining debt obligation payments and accounting for outlays over the life of the plan based on current and future expenditures.
+                    </br>    
+                    <a data-dismiss="modal" onclick="$('#UMModal').modal('show'); return false;$('#About').modal('hide');"> click here to view a list of unmapped projects</a></p>
+                    </div>
+
+                    <div class="tab-pane fade" id="ext_fundTab">
+                    <h4>External Funded</h4>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/ext_fund.png" />
+                    <p>Projects that do not receive any Federal funding. They are generally carried out by toll authorities. DVRPC coordinates with the sponsoring agency on these projects, and includes them in its air quality conformity analysis. </p>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="bikepedTab">
+                    <h4>Bike and Pedestrian</h4>
+                    <img class="infologo" style="float:left;margin:0px 10px 0px 0px" src="img/bikeped.png" />
+                    <p><font style="color:grey;"><i>***These projects are not mapped.***</i></font></p>
+                    <p>Identified projects reflect the region’s desire to be more bike and pedestrian friendly. On-road needs are based on current funding levels in the Pennsylvania and New Jersey Transportation Improvement Programs, as well as additional targeted funding levels to increase the region’s investment in such facilities. Off-road needs are based on constructing all unbuilt, multiuse trails in The Circuit Regional Trail Network. Specific links of the Circuit will be funded through future iterations of the TIP.
+                    </br>    
+                    <a data-dismiss="modal" onclick="$('#UMModal').modal('show'); return false;$('#About').modal('hide');"> click here to view a list of unmapped projects</a></p>
+                    </div>
+                       
+                        
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.5/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
+    <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="assets/js/numeral.js"></script>
+    <script src="assets/js/leaflet.label.js"></script>
+    <script src="assets/js/leaflet.viewcenter.js"></script>
+    <script src="assets/js/app.js"></script>
+    
+    <script>var _gaq=[['_setAccount','UA-9825778-1'],['_trackPageview']];(function(d){var g=d.createElement('script'),s=d.scripts[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document))</script>
+
+  </body>
+</html>
