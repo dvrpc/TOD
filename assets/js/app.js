@@ -248,160 +248,6 @@
         FutureTOD = [props.Dev_Score,props.CommRent_S,props.ResRent_Sc,props.Land_Score,props.Planning_S];
         updatebarchart2(FutureTOD);
     }
-
-    function updatebarchart(Values) {
-    var options = {
-        chart: {
-            renderTo: 'existing',
-            type:'bar',
-            plotBackgroundColor: null,
-            plotBorderWidth: 0,//null,
-            plotShadow: true,
-            height:200,
-            spacingLeft: 65,
-            backgroundColor: '#DCDCDC'
-        },
-        colors: 
-            ['#24abe2']
-        ,
-        credits: {
-            enabled: false
-        },
-        title: {
-          //  text: 'Bicycle Volume by Month',
-          text:null,
-            x: -20 //center
-        },
-        xAxis: {
-            categories: [ 'Transit Service Quality','Job Access','Travel Time','Intensity','Car Ownership','Non-Car Commuters','Walk Score<sup>TM</sup>'],
-            labels: {useHTML: true}
-        
-        },
-        plotOptions: {
-            column: {
-                stacking: 'normal',
-                dataLabels: {
-                    enabled: false,
-                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                    style: {
-                        textShadow: '0 0 3px black'
-                    }
-                }
-            }
-        },
-        yAxis: {
-            min: 0,
-            max:4,
-            tickInterval: 1,
-            height: 150,
-            title: {
-                text: ''
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            enabled: false
-        },
-
-        series: [{
-           name:'Total',
-           id: 'Values',
-            data: []
-        }]
-    };
-
-    var Labels = [],
-    counData = [];
-    for (var i = 0; i < Values.length; i++){
-    counData.push({
-    name: Labels[i],
-    y: Values[i]})
-    }
-    options.series[0].data = counData;
-    chart = new Highcharts.Chart(options)
-
-    $('.highcharts-xaxis-labels text, .highcharts-xaxis-labels span').click(function () {
-       // console.log(this.textContent.split(' ')[0]);
-         legendraw(this.textContent.split(' ')[0]);
-    });
- //    console.log(bikeindata);
-    }
-
-    function updatebarchart2(Values) {
-        var options = {
-            chart: {
-                renderTo: 'future',
-                type:'bar',
-                plotBackgroundColor: null,
-                plotBorderWidth: 0,//null,
-                plotShadow: true,
-                height:200,
-                backgroundColor: '#DCDCDC'
-            },
-            colors: 
-                ['#24abe2']
-            ,
-            credits: {
-                enabled: false
-            },
-            title: {
-              //  text: 'Bicycle Volume by Month',
-              text:null,
-                x: -20 //center
-            },
-            xAxis: {
-                categories: [ 'Development Activity','Commercial Market Performance','Residential Market Performance','Available Land','Planning Context']
-            },
-            plotOptions: {
-                column: {
-                    stacking: 'normal',
-                    dataLabels: {
-                        enabled: false,
-                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-                        style: {
-                            textShadow: '0 0 3px black'
-                        }
-                    }
-                }
-            },
-            yAxis: {
-                min: 0,
-                max:4,
-                tickInterval: 1,
-                height: 150,
-                title: {
-                    text: ''
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            tooltip: {
-                enabled: false
-            },
-            series: [{
-               name:'Total',
-               id: 'Values',
-               pointWidth: 11,
-               data: []
-            }]
-        };
-
-        var Labels = [],
-        counData = [];
-        for (var i = 0; i < Values.length; i++){
-        counData.push({
-        name: Labels[i],
-        y: Values[i]})
-        }
-        options.series[0].data = counData;
-        chart = new Highcharts.Chart(options)
-     //    console.log(bikeindata);
-    }
-
-
     function updatebarchartEXOV(Values) {
     var options = {
         chart: {
@@ -409,8 +255,8 @@
             type:'bar',
             plotBackgroundColor: null,
             plotBorderWidth: 0,//null,
-            plotShadow: true,
-            height:100,
+            plotShadow: false,
+            height:80,
             backgroundColor: '#DCDCDC'
         },
         colors: 
@@ -425,7 +271,10 @@
             x: -20 //center
         },
         xAxis: {
-            categories: [ 'Existing TOD Orientation']
+            categories: [ 'Existing TOD Orientation'],
+            labels: false,
+             tickColor: "#046f9e",
+            lineColor: "#046f9e",
         },
         plotOptions: {
             column: {
@@ -443,7 +292,7 @@
             min: 0,
             max:4,
             tickInterval: 1,
-        //    height: 75,
+            gridLineColor: "#046f9e",
             title: {
                 text: ''
             }
@@ -477,6 +326,152 @@
     });
     }
 
+    function updatebarchart(Values) {
+    var options = {
+        chart: {
+            renderTo: 'existing',
+            type:'bar',
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,//null,
+            plotShadow: false,
+            height:200,
+            spacingRight: 65,
+            backgroundColor: '#DCDCDC'
+        },
+         colors: ['#24abe2']
+       ,
+        credits: {
+            enabled: false
+        },
+        title: {
+          //  text: 'Bicycle Volume by Month',
+          text:null,
+            x: -20 //center
+        },
+        xAxis: {
+            categories: [ 'Transit Service Quality','Job Access','Travel Time','Intensity','Car Ownership','Non-Car Commuters','Walk Score<sup>TM</sup>'],
+            tickColor: "black",
+            lineColor: "black",
+            labels: {useHTML: true}
+        
+        },
+        yAxis: {
+            min: 0,
+            max:4,
+            tickInterval: 1,
+            height: 150,
+            gridLineColor: "black",
+            title: {
+                text: ''
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: false
+        },
+
+        series: [{
+               name:'Total',
+               id: 'Values',
+               data: []
+            }]
+    };
+
+    var Labels = [],
+    counData = [];
+    for (var i = 0; i < Values.length; i++){
+    counData.push({
+    name: Labels[i],
+    y: Values[i]})
+    }
+    options.series[0].data = counData;
+    chart = new Highcharts.Chart(options)
+
+    $('.highcharts-xaxis-labels text, .highcharts-xaxis-labels span').click(function () {
+       // console.log(this.textContent.split(' ')[0]);
+         legendraw(this.textContent.split(' ')[0]);
+    });
+ //    console.log(bikeindata);
+    }
+
+    function updatebarchart2(Values) {
+        var options = {
+            chart: {
+                renderTo: 'future',
+                type:'bar',
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,//null,
+                plotShadow: false,
+                height:200,
+                spacingRight: 65,
+                backgroundColor: '#DCDCDC'
+            },
+            colors: 
+                ['#24abe2']
+            ,
+            credits: {
+                enabled: false
+            },
+            title: {
+              //  text: 'Bicycle Volume by Month',
+              text:null,
+                x: -20 //center
+            },
+            xAxis: {
+                categories: [ 'Development Activity','Commercial Market Performance','Residential Market Performance','Available Land','Planning Context']
+            },
+            plotOptions: {
+                column: {
+                    colorByPoint: true,
+                    colors: ['red','red','grey','blue','green'],
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: false,
+                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                        style: {
+                            textShadow: '0 0 3px black'
+                        }
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                max:4,
+                tickInterval: 1,
+                height: 150,
+                title: {
+                    text: ''
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                enabled: false
+            },
+            series: [{
+               name:'Total',
+               id: 'Values',
+               data: []
+            }]
+        };
+
+        var Labels = [],
+        counData = [];
+        for (var i = 0; i < Values.length; i++){
+        counData.push({
+        name: Labels[i],
+        y: Values[i]})
+        }
+        options.series[0].data = counData;
+        chart = new Highcharts.Chart(options)
+     //    console.log(bikeindata);
+    }
+
+    
+
     function updatebarchartFUOV(Values) {
     var options = {
         chart: {
@@ -484,7 +479,7 @@
             type:'bar',
             plotBackgroundColor: null,
             plotBorderWidth: 0,//null,
-            plotShadow: true,
+            plotShadow: false,
             height:100,
             spacingLeft: 30,
             backgroundColor: '#DCDCDC'
