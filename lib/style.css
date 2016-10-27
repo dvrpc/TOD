@@ -1,0 +1,216 @@
+html,body,#sidebar,#container, #chart-sidebar {
+    height: 100%;
+    margin: 0;
+}
+body {
+    padding-top: 50px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    overflow: auto;
+}
+p {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #24abe2;
+}
+label {
+    font-weight: 400;
+}
+/*--------------------------------------------------------*/
+/*--------  UI Element Color Styles  ---------------------*/
+/*------- Change to alter color theme  -------------------*/
+/*--------------------------------------------------------*/
+body, .landing, #sidebar, #chart-sidebar {
+    background-color: #efefef !important;
+}
+.infowrap, .ofooter, .oheader {
+    background-color: #24abe2 !important;
+}
+.infowrap, #infoheader, .footer_btn, .footernav, .ofooter, .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-inverse {
+    border-color: #ddd;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus, .footer_btn:hover {
+    background-color: #DDD;
+    border-color:#DDD;
+}
+.footer_btn, #infoheader, .navbar-inverse .navbar-toggle, .navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover {
+  background-color: #E9E9E9;  
+}
+.landingLink>a{
+  color: #FFFFFF !important;
+}
+.landingUI>a {
+  color: #FFFFFF !important;
+}
+.landingUI {
+  margin-right:50px;
+}
+.landingLink>a:hover, .landingUI>a:hover {
+    border-bottom: 3px solid #312867;
+    color: #BBE6FA;
+}
+.navbar-inverse .navbar-toggle, .navbar-nav > li > .dropdown-menu {
+    border-color:#E9E9E9;
+}
+#indactorInfo .nav-tabs>li.active>a{
+    border-bottom-color: #6689BC !important;
+}
+.navbar-inverse .navbar-toggle .icon-bar{
+    background-color: #6689BC !important;
+}
+.footer_btn, .chkicon, .legend-check i {
+    color: #6689BC !important;
+}
+.leaflet-bar a, .leaflet-bar a:hover {
+ color: #6689BC !important;
+}
+a:hover, .navbar-inverse .navbar-nav>li>a:hover, .footer_btn:hover , .legend-check i:hover{
+    color: #5876A2 !important;
+}
+.input-group #searchbox.form-control {
+    float: right;
+}
+.content-footer {
+    color: #efefef;
+    padding: 30px 0;
+    min-height: 200px;
+    background-color: #312867;
+    margin-top: 50px;
+    font-size: 12px;
+}
+.tooltip {
+    position: absolute;
+    background: rgba(200, 200, 200, 0.95);
+    border: 1px solid #ddd;
+    padding: 5px 12px; 
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.55);
+    text-shadow: 0 1px 0 #eee;
+}
+.ttL {
+    position: absolute;
+    background: rgba(68, 68, 68, 1);
+    border: 1px solid #ddd;
+    padding: 5px 12px; 
+    border-radius: 5px;
+    color: white;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.55);
+}
+.name {
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    fill: rgb(65, 65, 65);
+    font-weight: bold;
+    text-shadow: 0px 1px 0px rgb(255, 255, 255);
+}
+h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    padding: 5px 0;
+    color: #333;
+}
+/*--------------------------------------------------------*/
+/*--------  TOD Element Color Styles  ---------------------*/
+/*--------------------------------------------------------*/
+.TOD_city {
+    width: 100%;
+    height: 300px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.homepage-data-overlay {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 520px;
+    width:100%;
+}
+.homepage-title {
+    float: none;
+    padding-top: 38px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    background: url(images/header_bg.png) center 60% no-repeat no-repeat #dcdcdc;
+    background-size: cover;
+    height: 470px;
+}
+.homepage-title h3, .hp-block-text {
+  /*  background-color: rgba(255,255,255,.75); */
+    color: #24abe2;
+  /*  width:60%; */
+}
+.hp-tool-links h3{
+    color: #24abe2;
+}
+.tod-info {
+    background-color: rgba(255,255,255,.85);
+    color: black;
+     font-size: 12px;
+}
+.tod-method h3 {
+    background-color: #24abe2;
+    color: white;
+}
+.tod-method{
+    background-color: #24abe2;
+    color: white;
+    font-size: 12px;
+}
+.hp-tool-links {
+    background-color: #FFF;
+    border: 1px solid #B7B7B7;
+    text-align: center;
+    padding: 10px 20px 20px;
+    transition: all .3s ease-in-out;
+}
+.hp-tool-links, .stat-block {
+    box-shadow: 0 0 10px #b7b7b7;
+}
+.hp-tool-btn {
+    background-color: #312867;
+    color: #fff;
+    padding: 15px;
+    width: 100%;
+    font-size: 1.2em;
+    border: none;
+}
+.hp-btn-upper {
+    margin-bottom: 10px;
+}
+#chart-link {
+    color: #fff;
+}
+#chart-sidebar h3 {
+    color: #24abe2;
+    margin: 10px 0px 0px 10px;
+}
+#chart-info{
+    margin: 10px 0px 0px 10px;
+    font-size: 12px;
+}
+#tod1-graph{
+    height: 550px;
+}
+#cardbikepanel{
+  border-color: #046f9e;
+  background-color:#EFEFEF;
+  margin-left: 5px;
+}
+#cardbike{
+  background-color:#EFEFEF;
+  border-color: #046f9e;
+  padding-bottom: 15px;
+  border-bottom: 0px transparent;
+  margin-bottom: 0px;
+}
+#chartDIV {
+    height: 100%;
+   background-color: white;
+}
+.btn-primary a{
+    color: #fff;
+}

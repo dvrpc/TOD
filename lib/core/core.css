@@ -1,0 +1,249 @@
+/*--------------------------------------------------------*/
+/*--------------------------------------------------------*/
+/*      Open Freight Application Styles 
+/*      Version 1.0
+/*      Updated: July 19, 2015
+
+/*--------------------------------------------------------*/
+/*--------  Navigation Bar Styles  -----------------------*/
+/*--------------------------------------------------------*/
+.navbar .navbar-brand {
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFF;
+    white-space: nowrap;
+    padding: 0 !important;
+}
+.logo-container {
+    display: inline-block;
+    padding: 0px 30px 0px 10px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.navbar-nav>li>a, .navbar-nav>li>.dropdown {
+    margin: 6px 4px;
+    padding: 9px 10px;
+ /*   border-radius: 5px; */
+}
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -7px;
+    margin-left:4px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:hover,.navbar-inverse .navbar-nav>.open>a:focus {
+    color: #fff;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.navbar-collapse.in {
+    overflow-y: hidden;
+}
+/*--------------------------------------------------------*/
+/*--------  Typeahead Search Styles  ---------------------*/
+/*--------------------------------------------------------*/
+.typeahead {
+    background-color: #FFF;
+}
+/*.search-container {
+    width: 280px;
+}*/
+.tt-dropdown-menu {
+    background-color: #FFF;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    margin-top: 4px;
+    padding: 4px 0;
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+}
+.tt-suggestion {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 3px 10px;
+}
+.tt-suggestion.tt-cursor {
+    background-color: #5876A2;
+    color: #FFF;
+    cursor: pointer;
+}
+.tt-suggestion p {
+    margin: 0;
+}
+.tt-suggestion + .tt-suggestion {
+    border-top: 1px solid #ccc;
+}
+.typeahead-header {
+    margin: 0 5px 5px;
+    padding: 3px 0;
+    border-bottom: 2px solid #333;
+}
+/*-----------------------------------------------*/
+/*--------------  Map  UI Styles   --------------*/
+/*-----------------------------------------------*/
+#mapDIV {
+    height: 100%;
+    margin: 0;
+    -webkit-box-shadow: 0 -1px 10px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 -1px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.5);
+}
+.progress-bar-info {
+    background-color: #EFA06A !important;
+}
+.progress-bar.animate {
+   width: 100%;
+}
+
+
+/*-----------------------------------------------*/
+/*-------------  Other UI Styles   --------------*/
+/*-----------------------------------------------*/
+.tooltip {
+    z-index: 3000;
+}
+.tooltip-inner {
+    background-color: #212C3C;
+    color: #fff;
+}
+.tooltip.top .tooltip-arrow {
+    border-top-color: #212C3C;
+}
+
+.tooltip.left .tooltip-arrow {
+    border-left-color: #212C3C;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #212C3C;
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: #212C3C;
+}
+.landing {
+    z-index: 1029;
+    width: 100%;
+    overflow-y: auto;
+    display: block;
+    bottom: 34px;
+    position: absolute;
+    top: 50px;
+    padding-bottom: 20px;
+}
+.landtab-content > .tab-pane {
+    display: none;
+}
+.modal_icon {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+}
+.modal-header {
+    padding: 10px 15px 5px !important;
+    background-color: #24abe2 !important;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: #FFF;
+}
+.modal-legend{
+color:#FFF;
+} 
+.modal-header .close {
+    margin-top: 0 !important;
+}
+.modal-body .nav>li>a {
+    padding: 10px 8px !important;
+}
+.ocontent {
+    padding-bottom: 34px !important;
+}
+
+/*-----------------------------------------------*/
+/*--------------   Footer Styles   --------------*/
+/*-----------------------------------------------*/
+.ofooter {
+    height: 34px;
+    border-width: 1px;
+    border-top-style: solid;
+}
+.footernav {
+    border-width: 1px;
+    border-right-style: solid;
+    margin-right: 345px;
+    text-align: right;
+}
+.footer_btn {
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    outline: none;
+}
+
+/*-----------------------------------------------*/
+/*------------   Other Page Styles   ------------*/
+/*-----------------------------------------------*/
+.white {
+    color: #fff !important;
+}
+.center {
+    text-align: center;
+}
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+.hide {
+    display: none;
+}
+.item {
+    width: 150px;
+}
+.last {
+    border-bottom-width: 0 !important;
+}
+
+.circle-md.legend-icon, .circle-cm.legend-icon, .circle-sm.legend-icon, .crc-md.legend-icon, .crc-sm.legend-icon, .crc-cm.legend-icon {
+    left: 16px !important;
+    top: 6px !important;
+}
+.legend-check{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    margin-right: 4px;
+    left: 26px;
+    top: 10px;
+    font-size: 18px;
+}
+.panel-heading > a{
+    display: flex;
+    display: -webkit-flex; /*Safari 6.1+ Support */
+}
+
+.panel-heading> a.accordion-toggle{
+    display: flex;
+    display: -webkit-flex; /*Safari 6.1+ Support */
+    width:100%;   
+}
+.legPanel {
+    padding:0px;
+}}

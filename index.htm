@@ -1,59 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-    <title>DVRPC - TOD Potential v1.0</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="description" content="version 1.0.1">
+        <meta name="author" content="Christopher Pollard, DVRPC">     
+        <title>TOD Potential 1.0</title>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.css">
-    <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
+        
+        <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" href="lib/charts.css" />
+        <link rel="stylesheet" href="lib/map.css" />
+        <link rel="stylesheet" href="lib/leaflet_label.css">
+        <link rel="stylesheet" href="lib/core/core.css">
+        <link rel="stylesheet" href="lib/style.css" />
+       
+        <style>
+        #loading {
+                position: absolute;
+                width: 220px;
+                height: 19px;
+                top: 50%;
+                left: 50%;
+                margin: -10px 0 0 -110px;
+                z-index: 1028;
+            }
+        .omodal{
+            position: absolute;
+            width: 220px;
+            height: 19px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -110px;
+            z-index: 1028;
+            display: none;
+            overflow: hidden;
+            outline: 0px none;
+        }
+        @media screen and (min-width: 768px) {
+                .modal-dialog {
+                    width:730px!important;
+                }
+            }
+            @media (max-width: 1360px){
+                .search-container{
+                    width:250px!important;
+                }
+            }
+            @media (max-width: 1270px) {
+                .navbar .navbar-brand {
+                    font-size: 18px;
+                    float: left;
+                }
+                .leaflet-control-attribution {
+                    display: none;
+                }
+                
+            }
+            @media (max-width: 1200px) {
+               .search-container {
+                    width: 200px!important;
+                }
+            }
+            @media (max-width: 960px) {
+               .search-container {
+                    display :none!important;
+                }
+                  .btn-responsive {
+            padding:4px 9px;
+            font-size:90%;
+            line-height: 1.2;
+            margin-top: 10px;
+            } 
 
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/leaflet_label.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-  </head>
+            }
+            @media (max-width: 768px){
+                .search-container {
+                    display: table!important;
+                    width: 100%!important;
+                }
+                .logo-container{
+                    padding:0px;
+                }
+                .navbar-nav .open .dropdown-menu{
+                    background-color:#fff;
+                }
+                #infobox_ {
+                    right:10px;
+                }
+            }
+            @media (max-width: 376px){
+                .infowrap{
+                    padding:20px;
+                    height:auto;
+                }
+                #infobox_ {
+                    display:none;
+                }
+            }
+            /* Print Handling */
+            @media print {
+                .navbar, .toggle, #sidebar {
+                    display: none !important;
+                }
+            }
+        </style> 
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+        <![endif]-->
+    </head>
 
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top oheader">
         <div class="navbar-header">
-          <div class="navbar-icon-container">
-            <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
-            <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
-          </div>
-              <span><a class="navbar-brand" href="http://www.dvrpc.org/" target="_blank"><img src="http://www.dvrpc.org/webmaps/tcdi/images/dvrpc_logo.png" alt="DVRPC" style="max-height:30px;margin:-4px 10px -10px 0;"/></a>
-              <img  style="margin:5px 0px 0px 0px" src="assets/img/logo.png"/>   
-              </span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            <div class="navbar-brand">
+               
+            </div>
         </div>
-        <div class="navbar">
-          <ul class="nav navbar-nav navbar-right">
-           <li><a href="#" id="legend-btn"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Scoring Categories</a></li>
-            <li><a href="#" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
-          </ul>
+        <div id="navbar-links" class="navbar-collapse collapse">
+            <span><img  style="margin:5px 0px 0px 30px" src="lib/images/LogoHorizontal.png"/></span>
+         <!--    <form id="nav_search" class="navbar-form navbar-right mapUI" style="display:none;">
+                    <div class="input-group search-container">
+                        <input id="searchbox" type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </div>
+            </form>
+-->
+            <ul id="landing" class="nav navbar-nav navbar-right">
+                <li class="landingLink"><a href="#home"  data-tab="home" data-toggle="collapse" data-target=".navbar-collapse.in">&nbsp;&nbsp;Home</a></li>
+                <li class="landingLink"><a href="#page1"  data-tab="PhillyFreightFinder" data-toggle="collapse" data-target=".navbar-collapse.in">Data Analysis</a></li>
+                <li id="maplink" class="landingUI"><a href="#map" data-tab="map" data-toggle="collapse" data-target=".navbar-collapse.in">Map</a></li>
+                <a class="navbar-brand navbar-right" href="http://www.dvrpc.org/" target="_blank"><img src="http://www.dvrpc.org/webmaps/tcdi/images/dvrpc_logo.png" alt="DVRPC" style="max-height:30px;margin:10px 25px -10px 10px;"/></a>
+            </ul>
+           
         </div><!--/.navbar-collapse -->
-      </div>
     </div>
+    <!--landing pages-->
+        <div id="oFFlanding" class="landing fade in landtab-content landingUI">
+            <!--home tab-->
+                <div id="home" class="tab-pane active in landing-content" style="color:#333333;">
+                    
+                    <div class='homepage-title center-block col-lg-12'>
+                        <img class="hidden-xs homepage-data-overlay" src="lib/images/TOD_city.jpg">
+                        <div class='center-block col-lg-12' style='float:none;'>
+                            <div class="col-md-6 col-lg-6 tod-info">
+                                <h3>Evaluating Transit-Oriented Development (TOD) Opportunities in Greater Philadelphia</h3> 
+                                    <p>Transit-Oriented Development (TOD) is compact, mixed-use development within an easy walk of a transit station. Its pedestrian-oriented design encourages residents and workers to drive their cars less and ride mass transit more.<br><br>
+                                    TOD has played an essential role in the historical growth and development of the Greater Philadelphia region. Today, TOD remains an integral part of a centers-based strategy for regional growth because it can enhance access to jobs, promote healthy and active lifestyles, and create vibrant communities with a variety of transportation choices.<br><br>
+                                    This web application and the associated report are DVRPC’s latest effort to provide a systematic approach to assessing TOD investment opportunities throughout the region*. It is designed to provide public officials, planners, transit operators, developers, and citizens with resources that can help guide public and private investment at rail stations.<br><br>
+                                    <b>Use the links below to learn more about our analysis.</b><br><br>
+                                    <i>* This study includes 162 rail stations across multiple transit lines. Stations located within an area largely corresponding to Center City Philadelphia were not included in this analysis because the TOD potential of these station areas has been well established. See the report for a full discussion of how station areas were selected.</i>
+                                    </p>
+                            </div> 
+                            <div class="col-md-1 col-lg-1">
+                            </div>   
+                            <div class="col-md-5 col-lg-5 tod-method">
+                                <h3>Methodology</h3>
+                                <p>Station areas that possess a favorable combination of transit service, real estate conditions, developable property, and local government support represent potential TOD opportunities.<br><br> 
+                                DVRPC used 12 individual attributes divided into two complementary categories to evaluate the TOD readiness of station areas throughout the region. These categories describe separate yet related aspects of each station area. Composite scores for each category were generated by averaging the scores of the individual attributes within each category. Each station area was assigned a pair of scores which together can be used to evaluate its overall TOD readiness.<br><br>
+                                </p>
+                                <div class="row">
+                                <div class="col-md-6">
+                                <b>Existing TOD Orientation</b>
+                                <ul>
+                                    <li>Transit Service Quality</li>
+                                    <li>Travel Time</li>
+                                    <li>Job Access</li>
+                                    <li>Intensity</li> 
+                                    <li>Car Ownership</li>
+                                    <li>Non-Car Commuters</li>
+                                    <li>Walk Score®</li>  
+                                </ul> 
+                                </div>
+                                <div class="col-md-6">
+                                <b>Future TOD Potential</b>
+                                <ul>
+                                    <li>Development Activity</li>
+                                    <li>Commercial Market Performance</li>
+                                    <li>Residential Market Performance</li>
+                                    <li>Available Land</li> 
+                                    <li>Planning Context</li>  
+                                </ul>               
+                              </div>
+                            </div>
+                            </div>   
+                        </div>
+                    </div>
 
-<!-- Start Main Body -->
-    <div id="container">
-        <div id="sidebar" class="col-sm-5">
+                    <div class='center-block col-lg-10 col-md-12' style='float:none;'>
+                         <div class='col-sm-6 col-md-4'>
+                                <div class="hp-tool-links">
+                                    <span></span>
+                                    <h3><span>&nbsp;&nbsp;TOD IN THE REGION</span></h3>
+                                    <p><a href="http://www.dvrpc.org/TOD/" target="_new">Learn more about DVRPC's efforts to promote TOD in the Greater Philadelphia region</a></p>
+                                </div>
+                            </div>
+                        <div class='col-sm-6 col-md-4'>
+                            <div class="hp-tool-links">
+                                <h3>DATA ANALYSIS</h3>
+                                <a href="#page1" data-toggle="tab" ><img  style="margin:5px 0px 0px 0px" src="lib/images/dataicon.png"/></a>   
+                            </div>
+                        </div>
+                        <div class='col-sm-6 col-md-4'>
+                            <div class="hp-tool-links">
+                                <a href="#map" data-toggle="tab" ><h3>SEE THE MAP</h3></a>
+                                <a href="#map" data-toggle="tab" ><img  style="margin:5px 0px 0px 0px" src="lib/images/mapicon.png"/></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class='clearfix'></div>          
+                </div>
+
+                <!--Page Samples tab-->
+                <div id="page1" class="tab-pane fade in landing-content" style="color:#333333;">
+                    <div id="container2">
+                        <div id="chart-sidebar" class="col-sm-4 col-md-4 col-lg-4">
+                            <h3>Data Analysis</h3>
+                            <div id="chart-info">
+                            <p>This evaluation of TOD readiness uses 12 factors divided into two categories. To create an easily understood rating system, each factor was rated on a scale of one to four with four being the highest rating. In some cases, this ranking was based on a quartile distribution of that factor across all stations. In other cases, the TOD ratings were based on predetermined scoring ranges that help to differentiate station areas. Details on the specific evaluation criteria can be found on the map portion of this web site.</p>
+                            <p>The two categories used in this analysis describe separate yet related aspects of each station area’s readiness for TOD. The first category, <b>Existing TOD Orientation</b>, describes how supportive the existing conditions of a station area are of the land use and travel patterns that are frequently associated with TOD. The second category, <b>Future TOD Potential</b>, inventories data related to real estate market conditions and transit supportive planning efforts that are suggestive of future development opportunities. Composite scores for each category were generated by averaging the scores of individual attributes within each category.</p>
+                            <p>It is important to note that these scores represent a generalized assessment of TOD opportunities in our region. The rating system was designed to identify individual strengths and weaknesses within a station area (generally one-half mile) while also allowing for comparisons between station areas in different parts of the region. Lower ratings should not discourage proactive planning efforts designed to make a station area more vibrant, accessible, or attractive. Instead, lower scores can help guide the efforts of those wishing to encourage TOD in a specific location.</p>
+                            <p>The charts on this page plots each station area based on the pair of scores generated by this analysis. The dashed lines represent the median scores in each category for all stations being evaluated. Stations falling within Quadrant Two may represent the strongest TOD opportunities because they score well in both categories when compared to other stations throughout the region. Stations may be sorted by Transit Type or Station Area Type, a qualitative assessment of the land use context surrounding a station.<br></p>
+                            </div>
+                        </div>
+                        <div id="chartDIV" class="col-sm-8 col-md-8 col-lg-8">
+                            <div id="chartcards">
+                            <div class="tab-content" id="myTabs">
+                            <div id="chart-main" class="tab-pane fade in active">
+                            <div class="graph js-splash--responsive-chart-js" class="graph" id="tod1-graph"></div>
+                            </div>
+                            <div id="data-main" class="tab-pane fade">
+                            <div class="graph js-splash--responsive-chart-js" class="graph" id="tod2-graph"></div>
+                            </div>
+                            </div>
+                            </div>
+
+                            <div id="chartlower">
+                                
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                <div id="myButtons" class="btn-group" data-toggle="buttons">
+                                <div class="btn btn-primary btn-sm active" id="chart-btn">
+                                <input type="radio" checked><i class="glyphicon glyphicon-align-left"></i><a id="chart-tab" href="#chart-main"role="tab"></a>
+                                </div>
+                                </div>
+                                
+                            <div class="radio">
+                                <input type="radio" name="radio1" id="radio1" value="option1" checked>
+                                <label for="radio1">
+                                    Small
+                                </label>
+                            </div>
+                                <ul>
+                                    <i class="fa fa-circle tt1"></i> SEPTA BSL/MFL<br>
+                                    <i class="fa fa-circle tt2"></i> SEPTA NHSL<br>
+                                    <i class="fa fa-circle tt3"></i> NJ Transit Northeast Corridor<br>  
+                                    <i class="fa fa-circle tt4"></i> PATCO<br>
+                                    <i class="fa fa-circle tt5"></i> SEPTA Regional Rail<br>
+                                    <i class="fa fa-circle tt6"></i> NJ Transit RiverLINE<br>  
+                                    <i class="fa fa-circle-o tt7"></i> Transit Center (multiple transit lines)<br>
+                                    <i class="fa fa-circle tt8"></i> SEPTA Trolley<br>
+                                </ul> 
+                                </div>
+
+                                <div class="col-md-6">
+
+                               <div id="myButtons" class="btn-group" data-toggle="buttons">
+                                <div class="btn btn-primary btn-sm" id="data-btn">
+                                <input type="radio"><i class="glyphicon glyphicon-list-alt"></i><a id="data-tab" href="#data-main" role="tab"></a>
+                                </div>
+                                </div>
+                                <div class="radio">
+                                <input type="radio" name="radio1" id="radio2" value="option2">
+                                <label for="radio2">
+                                    Big
+                                </label>
+                            </div>
+                         
+                               <B>Station Area Type</B>
+                                <ul>
+                                    <i class="fa fa-circle-o st1"></i> Special District<br>
+                                    <i class="fa fa-square st2"></i> Suburban Center<br>
+                                    <i class="fa fa-circle st3"></i> Suburban Neighborhood<br>  
+                                    <i class="fa fa-square st4"></i> Town Center<br>
+                                    <i class="fa fa-circle st5"></i> Town Neighborhood<br>
+                                    <i class="fa fa-square st6"></i> Urban Center<br>  
+                                    <i class="fa fa-circle st7"></i> Urban Neighborhood<br>
+                                </ul> 
+
+                              </div>
+
+                            </div>
+                            </div>
+
+                        </div>  
+                    </div>  
+                </div>     
+        </div>
+        
+    <!--Map and Sidebar-->
+       <div class="row ocontent mapUI" id="container">
+            <div class="col-sm-5 col-lg-5" id="mapsidebar">
            <div class="row" id="barcharts"> 
+             
              <div id="cardclick">
              <h2>Click on station location for detailed information</h2>
             </div>
-             <div class="panel panel-primary" id="card">
+
+             <div class="panel panel-primary" id="mapcard">
              </div>
+
               <div id="stationinfo_all" class="stationinfo_all"></div> 
+
             <div class="col-sm-11" >
             <div class="panel panel-primary" id="cardbikepanel">
-            <div class="panel-heading" id="cardbike"></div>
-            <div id="existingOV" class="barchart"></div>
-            <div id="existing" class="barchart"></div>
+            <div class="panel-heading" id="cardbike">
+              <i>(click category name for description)</i>
+                <div id="MapButtons" class="btn-group pull-right" data-toggle="buttons">
+                <label class="btn btn-primary btn-sm active" id="mapchart-btn">
+                <input type="radio" checked><i class="glyphicon glyphicon-align-left"></i><a id="home-tab" href="#mapchart-main"role="tab">&nbsp;&nbsp;Chart</a>
+                </label>
+                <label class="btn btn-primary btn-sm" id="mapdata-btn">
+                <input type="radio"><i class="glyphicon glyphicon-list-alt"></i><a id="payment-tab" href="#mapdata-main" role="tab">&nbsp;&nbsp;Data</a>
+                </label>
+                </div>
+
+            </div>
+                <div class="tab-content" id="MapTabs">
+                <div id="mapchart-main" class="tab-pane fade in active">
+                <div id="existingOV" class="barchart"></div>
+                <div id="existing" class="barchart"></div>
+                </div>
+                <div id="mapdata-main" class="tab-pane fade">
+                <div id="existing-data" class="data-info"></div> 
+                </div>
+                </div>
             </div>
             </div>
+
             <div class="col-sm-11">
             <div class="panel panel-primary" id="cardpedpanel">
             <div class="panel-heading" id="cardped"></div>
@@ -61,79 +359,72 @@
             <div id="future" class="barchart"></div>
             </div>
             </div> 
+
+
           </div>
   
-      </div>
 
-      <div id="sidebar2" class="col-sm-7">
-        <div id="map"></div>
-      </div>  
+            </div><!--Siderbar Close-->
+            <!---Map Pane -->
+            <div class="col-sm-7 col-lg-7 mapUI" id="mapDIV" style="display:none;">
+                <div id="loading" style="display: block;">
+                    <div class="loading-indicator">
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end Map and Sidebar-->
+        <!--Footer container-->
+        <div class="navbar-fixed-bottom ofooter">
+            <div style="height:34px;">
+                <!-- Landing Footer -->
+                <div id="LandingFooter" class="center landingUI">
+                   	<p>TOD Potential Web Map| BETA Version </p>
+                </div>            
+            </div>
+        </div>  
 
- </div>     
-
-<!-- End Main Body -->
-    
-    <div id="loading">
-      <div class="loading-indicator">
-        <div class="progress progress-striped active">
-          <div class="progress-bar progress-bar-info progress-bar-full"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-          </div>
-          <div class="modal-body">
-            <div id="attribution">
-             &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a></div>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
-   <div class="modal fade" id="legendModal">
+       <!-- End Footer Container -->
+       <div class="modal fade" id="EXTODModal">
         <div class="modal-dialog modal-lg" style="width: 875px;">
             <div class="modal-content" style="overflow:hidden">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Existing TOD Orientatio Category Description</h4>
+                    <h4 class="modal-title modal-legend">Existing TOD Orientatio Category Description</h4>
                     <p>The seven attributes in this category provide an overview of the existing transit, demographics, and physical context of a station area. Together, these attributes help to identify station areas where the land use and travel patterns frequently associated with TOD already exist. </p>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xs-4">
-                          <ul id="legendTabs" class="nav nav-tabs nav-stacked nav-left">
+                          <ul id="EXTODTabs" class="nav nav-tabs nav-stacked nav-left">
                             
                               <li class="active">
-                                  <a href="#Transit" data-toggle="tab" data-bg="#3C3C3C">Transit Service Quality</a>
+                                  <a href="#map" data-target="#Transit" role="tab" data-toggle="tab">Transit Service Quality</a>
                               </li>
                               <li>
-                                  <a href="#Job" data-toggle="tab" data-bg="#991f31">Job Access</a>
+                                  <a href="#map" data-target="#Job" role="tab" data-toggle="tab" >Job Access</a>
                               </li>
                               <li>
-                                  <a href="#Travel" data-toggle="tab" data-bg="#60afa1">Travel Time</a>
+                                  <a href="#map" data-target="#Travel" role="tab" data-toggle="tab">Travel Time</a>
                               </li>
                               <li>
-                                  <a href="#Intensity" data-toggle="tab" data-bg="#a6c834">Intensity</a>
+                                  <a href="#map" data-target="#Intensity" role="tab" data-toggle="tab">Intensity</a>
                               </li>
                               <li>
-                                  <a href="#Car" data-toggle="tab" data-bg="#006886">Car Ownership</a>
+                                  <a href="#map" data-target="#Car" role="tab" data-toggle="tab">Car Ownership</a>
                               </li>
                               <li>
-                                  <a href="#Non-Car" data-toggle="tab" data-bg="#3b8448">Non-Car Commuters</a>
+                                  <a href="#map" data-target="#Non-Car" role="tab" data-toggle="tab">Non-Car Commuters</a>
                               </li>
                               <li>
-                                  <a href="#Walk" data-toggle="tab" data-bg="#db182e">Walk Score®</a>
+                                  <a href="#map" data-target="#Walk" role="tab" data-toggle="tab">Walk Score®</a>
                               </li>
                           </ul>
                         </div>
                         <div class="col-xs-7">
-                    <div id="legendTabsContent" class="tab-content">
+                    <div id="EXTODTabsContent" class="tab-content">
       
                     <div class="tab-pane fade active in" id="Transit">
                     <h4 class="modal-title" style="color:black">Transit Service Quality</h4>
@@ -212,22 +503,30 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
+    <!-- /.modal --> 
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.5/typeahead.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
-    <script src="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <!-- Latest compiled and minified plotly.js JavaScript -->
+        <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-    <script src="http://code.highcharts.com/highcharts.js"></script>
+        <!-- OR use a specific plotly.js release (e.g. version 1.5.0) -->
+        <script type="text/javascript" src="https://cdn.plot.ly/plotly-1.5.0.min.js"></script>
 
-    <script src="assets/js/numeral.js"></script>
-    <script src="assets/js/leaflet.label.js"></script>
-    <script src="assets/js/leaflet.viewcenter.js"></script>
-    <script src="assets/js/app.js"></script>
-    
-    <script>var _gaq=[['_setAccount','UA-9825778-1'],['_trackPageview']];(function(d){var g=d.createElement('script'),s=d.scripts[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document))</script>
+        <!-- OR an un-minified version is also available -->
+        <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.js"></script>
 
-  </body>
+  <!--  <script src="http://d3js.org/d3.v2.min.js?2.9.3"></script> -->
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+
+        <script type="text/javascript" src="lib/assets/typeahead.bundle.min.js"></script>
+        <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 
+        <script type="text/javascript" src="lib/assets/leaflet-providers.js"></script>        
+        <script type="text/javascript" src="lib/assets/leaflet.label.js"></script>    
+
+        <script type="text/javascript" src="lib/map.js"></script><!--customized mapping functions to load data -->
+        <script type="text/javascript" src="lib/core/core.js"></script><!--core application functions -->
+        <script type="text/javascript" src="plot1.js"></script>
+    </body>
 </html>
