@@ -98,7 +98,6 @@
    width: 100%;
 }
 
-
 /*-----------------------------------------------*/
 /*-------------  Other UI Styles   --------------*/
 /*-----------------------------------------------*/
@@ -166,37 +165,10 @@ color:#FFF;
 /*--------------   Footer Styles   --------------*/
 /*-----------------------------------------------*/
 .ofooter {
-    height: 34px;
+    height: 35px;
     border-width: 1px;
     border-top-style: solid;
 }
-.footernav {
-    border-width: 1px;
-    border-right-style: solid;
-    margin-right: 345px;
-    text-align: right;
-}
-.footer_btn {
-    border-style: solid;
-    border-width: 1px;
-    display: inline-block;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.428571429;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    background-image: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    outline: none;
-}
-
 /*-----------------------------------------------*/
 /*------------   Other Page Styles   ------------*/
 /*-----------------------------------------------*/
