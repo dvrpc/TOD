@@ -12,13 +12,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
 
-        
         <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
-         <link rel="stylesheet" href="lib/charts.css" />
-        <link rel="stylesheet" href="lib/map.css" />
-        <link rel="stylesheet" href="lib/leaflet_label.css">
         <link rel="stylesheet" href="lib/core/core.css">
-        <link rel="stylesheet" href="lib/style.css" />
+        <link rel="stylesheet" href="lib/css/charts.css" />
+        <link rel="stylesheet" href="lib/css/map.css" />
+        <link rel="stylesheet" href="lib/css/leaflet_label.css">
+        <link rel="stylesheet" href="lib/css/style.css" />
        
         <style>
         #loading {
@@ -140,6 +139,7 @@
 -->
             <ul id="landing" class="nav navbar-nav navbar-right">
                 <li class="landingLink"><a href="#home"  data-tab="home" data-toggle="collapse" data-target=".navbar-collapse.in">&nbsp;&nbsp;Home</a></li>
+                 <li class="landingLink"><a href="#planning"  data-tab="planning" data-toggle="collapse" data-target=".navbar-collapse.in">TOD in the Region</a></li>
                 <li class="landingLink"><a href="#page1"  data-tab="PhillyFreightFinder" data-toggle="collapse" data-target=".navbar-collapse.in">Data Analysis</a></li>
                 <li id="maplink" class="landingUI"><a href="#map" data-tab="map" data-toggle="collapse" data-target=".navbar-collapse.in">Map</a></li>
                 <a class="navbar-brand navbar-right" href="http://www.dvrpc.org/" target="_blank"><img src="http://www.dvrpc.org/webmaps/tcdi/images/dvrpc_logo.png" alt="DVRPC" style="max-height:30px;margin:10px 25px -10px 10px;"/></a>
@@ -204,7 +204,8 @@
                                 <div class="hp-tool-links">
                                     <span></span>
                                     <h3><span>&nbsp;&nbsp;TOD IN THE REGION</span></h3>
-                                    <p><a href="http://www.dvrpc.org/TOD/" target="_new">Learn more about DVRPC's efforts to promote TOD in the Greater Philadelphia region</a></p>
+                                    <p><a href="#planning">Learn more about DVRPC's efforts to promote TOD in the Greater Philadelphia region</a></p>
+                                 <!--   <p><a href="http://www.dvrpc.org/TOD/" target="_new">Learn more about DVRPC's efforts to promote TOD in the Greater Philadelphia region</a></p> -->
                                 </div>
                             </div>
                         <div class='col-sm-6 col-md-4'>
@@ -223,10 +224,82 @@
                     </div>
                     <div class='clearfix'></div>          
                 </div>
+                 <!-- data disclaimer -->
+                <section id ='disclaimer' class='tab-pane landing-content'>
+                    <div class='page-title center-block col-lg-12'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h1>Data Disclaimer</h1>
+                        </div>
+                    </div>
+                    <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                        <div class="col-xs-12 col-sm-6">
+                            <p>The Delaware Valley Regional Planning Commission (DVRPC) excludes any and all implied warranties of merchantability and fitness for any digital file obtained from the Commission. No guarantees are expressed or implied as to the use or application of the digital information supplied. DVRPC assumes no responsibility to maintain them in any manner or form.</p>
+                            <p>DVRPC will not be liable for and the user agrees to hold DVRPC harmless from and against any direct, indirect, special, incidental, or consequential damages arising out of the use or inability to use the material supplied, or arising out of any inaccuracy or defect in the digital information supplied.</p>
+                            <p>Recipients of DVRPC digital files are not entitled to any file revisions, updates, corrections or new releases.</p>
+                            <p>Recipients of DVRPC digital files are encouraged to credit DVRPC as the source of the data when producing maps, graphics, or other documents that utilize DVRPC files.</p>
+                            
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="well well-sm">
+                                <h4>TOD in the Region</h4>
+                                <p>The contents and information contained in this application will be updated on a regular basis as new information is available. However, at any one point in time, some data may not reflect the most current conditions. At the present time, this mapping tool only contains infrastructure and facilities within the official DVRPC region.</p>
+                                <p>The format and information on this map may be updated or changed at any time. This map does not expand the liability of DVRPC, state, local, and other agencies beyond existing law.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                </section>
+                <!--planning tab-->
+                <div id ='planning' class='tab-pane landing-content'>
+                    <div class='page-title center-block col-lg-12'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                            <h1>TOD in the Region</h1>
+                        </div> 
+                    </div>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                             <div class='col-md-7 col-lg-7'>
+                                <p><i>TOD in the Region</i> is the product of DVRPC’s continuing, comprehensive smart growth planning program. This program enables [insert text] in the region.</p>
+                                <p>To learn more about the DVRPC's TOD activities and products, please visit the<br> <a href="http://www.dvrpc.org/TOD/" target="_new">Transit-oriented development (TOD) page of the DVRPC website</a>.</p>
+                                
+                            </div> 
+                            <div class='col-md-5 col-lg-5'>
+                                <div>
+                                    <h4>DVRPC Smart Growth Staff Mission Statement</h4>
+                                    <p>The DVRPC Freight Planning staff is dedicated to creating and sustaining a dynamic and service-oriented freight planning program in a culture of excellence as defined by integrity, passion, discipline, and personal and professional development.</p>
+                                    <h4>Contact our Staff</h4>
+                                        <b>Andrew Svekla</b><br/>
+                                        <em>Senior Planning and Design Analyst, Office of Smart Growth</em><br/>
+                                        <p>Phone: 215.238.2810  |  Email: <a href="mailto:asvekla@dvrpc.org" data-toggle="tooltip" title="Email Andrew">asvekla@dvrpc.org</a></p>
+                                </div>
+                            </div>
+                        </div>
+                     <div class='clearfix'></div>
+                    <div class='col-md-12 hpbanner'>
+                        <div class='center-block col-lg-10 col-sm-12' style='float:none;'>
+                        <h4>Recent TOD Studies</h4>
+                            <div class='col-md-7 col-lg-7'>
+                                <ul class="recentProjs" >
+                                    <li><a href="http://www.dvrpc.org/Products/07030/" target="_blank"><b>On Track: Progress Towards Transit-Oriented Development in the Delaware Valley</b><br/><span class="dateSub">Date Published: 2007</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/Products/03027/" target="_blank"><b>Linking Transit, Communities and Development: Regional Inventory of Transit-Oriented Development Sites, Volume One: Executive Summary </b><br/><span class="dateSub">Date Published: August 2003</span></a></li>
+                                </ul>
+                            </div>
+                            <div class='col-md-5 col-lg-5'>
+                             <!--    <ul class="recentProjs" style="padding-bottom:15px;">
+                                    <li><a href="http://www.dvrpc.org/Products/09064" target="_blank"><b>Freight Flows and Forecasts in the Philadelphia CSA</b><br/><span class="dateSub">Date Published: August 2010</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/Products/09058" target="_blank"><b>DVRPC Long-Range Vision for Freight</b><br/><span class="dateSub">Date Published: May 2010</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/Products/07024" target="_blank"><b>National Highway System Connectors to Freight Facilities in the Delaware Valley Region</b><br/><span class="dateSub">Date Published: January 2007</span></a></li>
+                                    <li><a href="http://www.dvrpc.org/Products/06007" target="_blank"><b>Delaware County Highway-Railroad Grade Crossing Study</b><br/><span class="dateSub">Date Published: October 2006</span></a></li>
+                                   
+                                </ul>  -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class='clearfix'></div>
+                </div>
 
                 <!--Page Samples tab-->
-                <div id="page1" class="tab-pane fade in landing-content" style="color:#333333;">
-                    <div id="container2">
+                <div id="page1" class="tab-pane fade in landing-content">
+                    <div id="container">
                         <div id="chart-sidebar" class="col-sm-4 col-md-4 col-lg-4">
                             <h3>Data Analysis</h3>
                             <div id="chart-info">
@@ -236,35 +309,45 @@
                             <p>The charts on this page plots each station area based on the pair of scores generated by this analysis. The dashed lines represent the median scores in each category for all stations being evaluated. Stations falling within Quadrant Two may represent the strongest TOD opportunities because they score well in both categories when compared to other stations throughout the region. Stations may be sorted by Transit Type or Station Area Type, a qualitative assessment of the land use context surrounding a station.<br></p>
                             </div>
                         </div>
-                        <div id="chartDIV" class="col-sm-8 col-md-8 col-lg-8">
-                            <div id="chartcards">
+                        <div id="chart-chart" class="col-sm-8 col-md-8 col-lg-8">
+                            <div id="chart-upper">
                             <div class="tab-content" id="myTabs">
-                            <div id="chart-main" class="tab-pane fade in active">
+
+                            <div id="chart-transit" class="tab-pane fade in active">
+                            <img id="ftp" src="lib/images/FutureTODPotential.png" />
+                            <row>    
                             <div class="graph js-splash--responsive-chart-js" class="graph" id="tod1-graph"></div>
+                            <img id="eto" src="lib/images/ExistingTODOrientation.png" />
+                            </row>
                             </div>
-                            <div id="data-main" class="tab-pane fade">
+
+                            <div id="chart-station" class="tab-pane fade">
+                            <img id="ftp" src="lib/images/FutureTODPotential.png" />
+                            <row>       
                             <div class="graph js-splash--responsive-chart-js" class="graph" id="tod2-graph"></div>
+                            <img id="eto" src="lib/images/ExistingTODOrientation.png" />
+                            </row>
                             </div>
                             </div>
                             </div>
 
-                            <div id="chartlower">
+                            <div id="chart-lower">
                                 
                             <div class="row">
                                 <div class="col-md-6">
 
                                 <div id="myButtons" class="btn-group" data-toggle="buttons">
-                                <div class="btn btn-primary btn-sm active" id="chart-btn">
-                                <input type="radio" checked><i class="glyphicon glyphicon-align-left"></i><a id="chart-tab" href="#chart-main"role="tab"></a>
+                                <div class="btn btn-primary btn-sm active" id="chart1-btn" style="display:none;">
+                                <input type="radio" checked><a id="chart-tab" href="#chart-transit" role="tab"></a>
                                 </div>
+                                </div>   
+
+                                <div class="radio">
+                                    <input type="radio" name="radio1" id="radio1" value="option1" href="#chart-transit" checked>
+                                    <label for="radio1">
+                                        <B>Transit System Type</B>
+                                    </label>
                                 </div>
-                                
-                            <div class="radio">
-                                <input type="radio" name="radio1" id="radio1" value="option1" checked>
-                                <label for="radio1">
-                                    Small
-                                </label>
-                            </div>
                                 <ul>
                                     <i class="fa fa-circle tt1"></i> SEPTA BSL/MFL<br>
                                     <i class="fa fa-circle tt2"></i> SEPTA NHSL<br>
@@ -279,19 +362,18 @@
 
                                 <div class="col-md-6">
 
-                               <div id="myButtons" class="btn-group" data-toggle="buttons">
-                                <div class="btn btn-primary btn-sm" id="data-btn">
-                                <input type="radio"><i class="glyphicon glyphicon-list-alt"></i><a id="data-tab" href="#data-main" role="tab"></a>
+                                <div id="myButtons" class="btn-group" data-toggle="buttons">
+                                <div class="btn btn-primary btn-sm" id="chart2-btn" style="display:none;">
+                                <input type="radio"><a id="data-tab" href="#chart-station" role="tab"></a>
                                 </div>
                                 </div>
+
                                 <div class="radio">
-                                <input type="radio" name="radio1" id="radio2" value="option2">
+                                <input type="radio" name="radio1" id="radio2" value="option2" href="#chart-station">
                                 <label for="radio2">
-                                    Big
+                                       <B>Station Area Type</B>
                                 </label>
-                            </div>
-                         
-                               <B>Station Area Type</B>
+                                </div>
                                 <ul>
                                     <i class="fa fa-circle-o st1"></i> Special District<br>
                                     <i class="fa fa-square st2"></i> Suburban Center<br>
@@ -329,7 +411,7 @@
             <div class="col-sm-11" >
             <div class="panel panel-primary" id="cardbikepanel">
             <div class="panel-heading" id="cardbike">
-              <i>(click category name for description)</i>
+              <i class="cat-desc" >(click category name for description)</i>
                 <div id="MapButtons" class="btn-group pull-right" data-toggle="buttons">
                 <label class="btn btn-primary btn-sm active" id="mapchart-btn">
                 <input type="radio" checked><i class="glyphicon glyphicon-align-left"></i><a id="home-tab" href="#mapchart-main"role="tab">&nbsp;&nbsp;Chart</a>
@@ -354,9 +436,26 @@
 
             <div class="col-sm-11">
             <div class="panel panel-primary" id="cardpedpanel">
-            <div class="panel-heading" id="cardped"></div>
-            <div id="futureOV" class="barchart"></div>
-            <div id="future" class="barchart"></div>
+            <div class="panel-heading" id="cardped">
+            <i class="cat-desc" >(click category name for description)</i>
+                <div id="MapButtons" class="btn-group pull-right" data-toggle="buttons">
+                <label class="btn btn-primary btn-sm active" id="mapchart2-btn">
+                <input type="radio" checked><i class="glyphicon glyphicon-align-left"></i><a id="home-tab" href="#mapchart2-main"role="tab">&nbsp;&nbsp;Chart</a>
+                </label>
+                <label class="btn btn-primary btn-sm" id="mapdata2-btn">
+                <input type="radio"><i class="glyphicon glyphicon-list-alt"></i><a id="payment-tab" href="#mapdata2-main" role="tab">&nbsp;&nbsp;Data</a>
+                </label>
+                </div>
+            </div>
+            <div class="tab-content" id="MapTabs">
+                <div id="mapchart2-main" class="tab-pane fade in active">
+                <div id="futureOV" class="barchart"></div>
+                <div id="future" class="barchart"></div>
+                </div>
+                <div id="mapdata2-main" class="tab-pane fade">
+                <div id="future-data" class="data-info"></div> 
+                </div>
+                </div>
             </div>
             </div> 
 
@@ -378,21 +477,26 @@
         </div><!--end Map and Sidebar-->
         <!--Footer container-->
         <div class="navbar-fixed-bottom ofooter">
-            <div style="height:34px;">
+            <div style="height:45px;color:white;margin-top:3px">
                 <!-- Landing Footer -->
-                <div id="LandingFooter" class="center landingUI">
-                   	<p>TOD Potential Web Map| BETA Version </p>
-                </div>            
+                <div id="LandingFooter" class="center">
+                   	<p>TOD in the Region [BETA Version]&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#disclaimer" class="hp-link">&nbsp;&nbsp;Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#planning" class="hp-link">&nbsp;&nbsp;Contact</a></p>
+                   <!--  <p>TOD Potential Web Map | BETA Version | <a href="#disclaimer" data-target="#aboutModal" role="tab" data-toggle="tab" onclick="$('#aboutModal').modal('show'); return false;">&nbsp;&nbsp;Disclaimer</a></p> -->
+                </div>  
+                <div class="col-sm-6 col-md-12">
+                            <p style="padding-top:58px;"><a href="#disclaimer">Data Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#license">License</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.dvrpc.org/policies/" target="_blank">Policies&nbsp;&nbsp;<i class="glyphicon glyphicon-new-window"></i></a></p><p>&copy;&nbsp;2015 Delaware Valley Regional Planning Commission</p>
+                        </div>          
             </div>
-        </div>  
-
+        </div> 
        <!-- End Footer Container -->
+
+       <!-- start Category Modal -->
        <div class="modal fade" id="EXTODModal">
         <div class="modal-dialog modal-lg" style="width: 875px;">
             <div class="modal-content" style="overflow:hidden">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title modal-legend">Existing TOD Orientatio Category Description</h4>
+                    <h4 class="modal-title modal-legend">Existing TOD Orientation Category Description</h4>
                     <p>The seven attributes in this category provide an overview of the existing transit, demographics, and physical context of a station area. Together, these attributes help to identify station areas where the land use and travel patterns frequently associated with TOD already exist. </p>
                 </div>
                 <div class="modal-body">
@@ -431,8 +535,8 @@
                     <p>The quality of transit service is measured using the Transit Connectivity Index (TCI) developed by the Center for Neighborhood Technology (CNT). A TCI score reflects the number of transit trips that are accessible by walking in a specific location. This measure examines the frequency and proximity of all transit routes and so this score also reflects nearby bus service.
                     <br>            
                     </p>
-                    <h5 class="modal-title" style="color:#24527F">Scoring</h5>
-                    <p style="color:#24527F">Higher scores are more supportive of TOD<br>
+                    <h5 class="modal-title">Scoring</h5>
+                    <p >Higher scores are more supportive of TOD<br>
                     4 = 39—57<br>
                     3 = 26—38<br>
                     2 = 20—25<br>
@@ -446,7 +550,7 @@
                     <h4 class="modal-title" style="color:black">Job Access</h4>
                     <p>The number of jobs accessible by transit directly influences how desirable a station area is to potential residents and businesses. This attribute identifies the number of jobs accessible via a 30-minute transit ride from a given station. This data was aggregated by CNT as part of their Housing and Transportation (H+T) Affordability Index.
                     </p>    
-                    <h5 class="modal-title" style="color:#24527F">Scoring</h5>
+                    <h5 class="modal-title">Scoring</h5>
                     <p style="color:#24527F">Higher scores are more supportive of TOD<br>
                     4 = 500,458—657,358<br>
                     3 = 391,834—498,024<br>
@@ -458,8 +562,7 @@
                     <div class="tab-pane fade" id="Travel">
                     <h4 class="modal-title" style="color:black">Travel Time</h4>
                     <p>Transit service is most attractive when travel times are competitive with driving times. This attribute is based on a ratio of transit to automobile travel time from a station area to Suburban Station in Center City Philadelphia, a central location within the region’s largest employment center. This ratio was derived using travel times from Google Maps based on a 9:00 AM arrival on a Tuesday morning. For transit trips, transfer and walking times are included. Travel time ratios of 1.0 or more reflect trips that are quicker by transit during this time period.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#24527F">Scoring</h5>
+                    <h5 class="modal-title">Scoring</h5>
                     <p>Higher scores are more supportive of TOD<br>
                     4 = 1.0 and greater<br>
                     3 = 0.75—0.99<br>
@@ -470,28 +573,47 @@
 
                     <div class="tab-pane fade" id="Intensity">
                     <h4 class="modal-title" style="color:black">Intensity</h4>
-                    <p>These projects include needs for miscellaneous items, such as parking facilities, drainage, environmental mitigation, Transportation Management Associations (TMAs), engineering, regional and local planning, and debt service. These needs are based on forecasting future need based on projects and costs that are included in the current Transportation Improvement Programs (TIP) for Pennsylvania and New Jersey.</p>
+                    <p>Higher residential and employment densities generally support greater transit ridership and encourage greater retail offerings. This factor represents the total number of residents and employees located within one-half mile of a station. This attribute combines population figures aggregated by the Center for Transit-Oriented Development’s (CTOD) TOD Database and employment figures from the National Establishment Time-Series (NETS) employment database. </p>
+                    <h5 class="modal-title">Scoring</h5>
+                    <p>Higher scores are more supportive of TOD<br>
+                    4 = 16,296 - 39,025<br>
+                    3 = 9,460 - 15,947<br>
+                    2 = 6,842 - 9,361<br>
+                    1 = 2,836 - 6,712
+                    </p>
                     </div>
                                 
                     <div class="tab-pane fade" id="Car">
                     <h4 class="modal-title" style="color:black">Car Ownership</h4>
-                    <p>These projects represent needs for existing rail infrastructure, vehicle fleets, and stations. Regular vehicle track, signal, catenary, power substations, signals, vehicle overhaul and replacement, station renovations, and ADA accessibility needs were used to develop the need for each of these three categories using asset management data. </p>
-                    <br>
-                    <h5 class="modal-title" style="color:#69883A">Scoring</h5>
+                    <p>This attribute reflects the percent of occupied housing units within a station area with zero or one vehicle. These households may represent existing or potential transit users. This data was gathered in CTOD’s TOD Database and is based on data from the U.S. Census Bureau’s American Community Survey.</p>
+                    <h5 class="modal-title">Scoring</h5>
+                    <p>Higher scores are more supportive of TOD<br>
+                    4 = 79.22% — 93.55%<br>
+                    3 = 61.62% — 79.15%<br>
+                    2 = 48.65% — 60.83%<br>
+                    1 = 24.46% — 48.01%
                     </div>
 
                     <div class="tab-pane fade" id="Non-Car">
                     <h4 class="modal-title" style="color:black">Non-Car Commuters</h4>
-                    <p>These projects aim to improve the functionality of the existing system. Types of projects include real-time information systems, signal preemption, fare modernization, and double tracking and sidings to improve service frequency. The estimated needs were developed by DVRPC and regional transit agencies.</p>
-                    <br>
-                    <h5 class="modal-title" style="color:#69883A">Scoring</h5>
+                    <p>This attribute captures the percent of station area residents who commute to work by public transportation, bicycle, or walking. Station areas with higher proportions of non-car commuters likely contain some of the physical attributes that support successful TOD. This data was gathered in CTOD’s TOD Database and is based on data from the U.S. Census Bureau’s American Community Survey.</p>
+                    <h5 class="modal-title">Scoring</h5>
+                    <p>Higher scores are more supportive of TOD<br>
+                    4 = 38.31% — 64.21%<br>
+                    3 = 24.76% — 38.07%<br>
+                    2 = 13.80% — 24.74%<br>
+                    1 = 4.06% — 13.39%
                     </div>
 
                     <div class="tab-pane fade" id="Walk">
                     <h4 class="modal-title" style="color:black">Walk Score®</h4>
-                    <p>These projects include new transit facilities, routes, and lines that the region would like to pursue. Need for this category is based on a short list of projects developed by the long-range plan subcommittee and includes projects listed in the Connections 2035 Plan and DVRPC’s Long-Range Vision for Transit Report. </p>
-                    <br>
-                    <h5 class="modal-title" style="color:#69883A">Scoring</h5>
+                    <p>A station area’s Walk Score® reflects the number of commercial amenities that can be reached on foot. This 100-point scale can also be used to help identify station areas with the physical characteristics that enable walking.</p>
+                    <h5 class="modal-title">Scoring</h5>
+                    <p>Higher scores are more supportive of TOD<br>
+                    4 = 90 and above<br>
+                    3 = 70 - 89<br>
+                    2 = 50 - 69<br>
+                    1 = 49 and below   
                     </div>
 
                   </div>
@@ -504,6 +626,145 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal --> 
+<!-- end Category Modal -->
+
+       <!-- start Category Modal -->
+       <div class="modal fade" id="FTODPModal">
+        <div class="modal-dialog modal-lg" style="width: 875px;">
+            <div class="modal-content" style="overflow:hidden">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title modal-legend">Future TOD Potential Category Description</h4>
+                    <p>The five attributes in this category capture a blend of the real estate market conditions and political context that are suggestive of future development opportunities. Areas with stronger market dynamics are more likely to attract developer interest and require less public sector intervention.  Similarly, a supportive local political climate can help facilitate the collaborative planning efforts needed to promote TOD.</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-4">
+                          <ul id="FTODPTabs" class="nav nav-tabs nav-stacked nav-left">
+                            
+                              <li class="active">
+                                  <a href="#map" data-target="#Development" role="tab" data-toggle="tab">Development Activity</a>
+                              </li>
+                              <li>
+                                  <a href="#map" data-target="#Commercial" role="tab" data-toggle="tab" >Commercial Market Performance</a>
+                              </li>
+                              <li>
+                                  <a href="#map" data-target="#Residential" role="tab" data-toggle="tab">Residential Market Performance</a>
+                              </li>
+                              <li>
+                                  <a href="#map" data-target="#Available" role="tab" data-toggle="tab">Available Land</a>
+                              </li>
+                              <li>
+                                  <a href="#map" data-target="#Planning" role="tab" data-toggle="tab">Planning Context</a>
+                              </li>
+                          </ul>
+                        </div>
+                        <div class="col-xs-7">
+                    <div id="FTODPTabsContent" class="tab-content">
+      
+                    <div class="tab-pane fade active in" id="Development">
+                    <h4 class="modal-title" style="color:black">Development Activity</h4>
+                    <p>This attribute measures the number of residential multifamily units proposed, under construction, or built within a station area over the last ten years according to the CoStar Commercial Real Estate Database. Areas with recent development activity typically reflect stronger market conditions.
+                    <br>            
+                    </p>
+                    <h5 class="modal-title">Scoring</h5>
+                    <p >Higher scores are more supportive of TOD<br>
+                        4 = 381 — 1,658<br>
+                        3 = 138 — 371<br>
+                        2 = 59 — 120<br>
+                        1 = 0 — 53
+                    </p>
+                    </div>
+
+                    <div class="tab-pane fade" id="Commercial">
+                    <h4 class="modal-title" style="color:black">Commercial Market Performance</h4>
+                    <p>Station areas were assessed based on average rent per square foot for office space over the last five years according to the CoStar Commercial Real Estate Database.</p>    
+                    <h5 class="modal-title">Scoring</h5>
+                    <p style="color:#24527F">Higher scores are more supportive of TOD<br>
+                    4 = $21.99 — $34.83<br>
+                    3 = $18.75 — $21.92<br>
+                    2 = $15.63 — $18.66<br>
+                    1 = $5.73 — $34.83
+                    </p>
+                    </div>
+
+                    <div class="tab-pane fade" id="Residential">
+                    <h4 class="modal-title" style="color:black">Residential Market Performance</h4>
+                    <p>This attribute is based on the current average asking rent per square foot for multifamily units according to the CoStar Commercial Real Estate Database.</p>
+                    <h5 class="modal-title">Scoring</h5>
+                    <p>Higher scores are more supportive of TOD<br>
+                    4 = $1.53 — $2.30<br>
+                    3 = $1.34 — $1.50<br>
+                    2 = $1.17 — $1.30<br>
+                    1 = $0.70 — $1.15
+
+                    </p>
+                     </div>
+
+                    <div class="tab-pane fade" id="Available">
+                    <h4 class="modal-title" style="color:black">Available Land</h4>
+                    <p>This measure mixes quantitative and qualitative data to identify the presence of vacant and underutilized land that may provide opportunities for TOD within one-quarter mile of stations.<br><br>
+
+                    Our assessment was based on land identified as vacant according to DVRPC’s 2010 Land Use GIS layer and the Philadelphia Planning Commission’s 2016 Land Use GIS layer. A station area’s rating was influenced by the number, size, and arrangement of vacant parcels as well as their proximity to the station. Although, this assessment was primarily based on the presence of vacant parcels, industrial properties and large areas of surface parking were also factored into this analysis. These lower-intensity land uses may offer future redevelopment opportunities as the demand for mixed-use development grows. 
+                    </p>
+                    </div>
+                                
+                    <div class="tab-pane fade" id="Planning">
+                    <h4 class="modal-title" style="color:black">Planning Context</h4>
+                    <p>This attribute attempts to measure the degree to which TOD and other transit-supportive measures have been identified as an appropriate strategy for a given station area. The rating incorporates transit-supportive municipal and county planning initiatives and regulations as well as recent and planned capital improvements sponsored by a transit provider.<br><br>
+
+                    The station areas that scored the highest in this category combined recent planning efforts, such as a station area redevelopment plan, with TOD-supportive ordinances and planned or recently-completed station facility improvements.
+                    </p>
+                    </div>
+
+                  </div>
+                  </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal --> 
+<!-- end Category Modal -->
+
+    <div class="modal fade" id="aboutModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Information</h4>
+                </div>
+
+                <div class="modal-body">
+                     <ul id="aboutTabs" class="nav nav-tabs">
+                        <li class="active"><a href="#" data-target="#disclaimer" role="tab" data-toggle="tab" data-toggle="tab"><i class="icon-exclamation-sign"></i>&nbsp;Disclaimer</a></li>
+                        <li><a href="#contact"  data-toggle="tab"><i class="icon-envelope"></i>&nbsp;Contact</a></li>
+                    </ul>
+                    <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
+                        <div class="tab-pane fade " id="disclaimer">
+                            <p>This web page is a public resource of general information. The Delaware Valley Regional Commission (DVRPC) makes no warranty, 
+                            representation, or guarantee as to the content, sequence, accuracy, timeliness, or completeness of any of the spatial data or database 
+                            information provided herein. DVRPC and partner state, local, and other agencies shall assume no liability for errors, omissions, or 
+                            inaccuracies in the information provided regardless of how caused; or any decision made or action taken or not taken by any person relying 
+                            on any information or data furnished within.</p>
+                        </div> 
+                        <div class="tab-pane fade " id="contact">
+                                <p>
+                                <b>Andrew Svekla</b><br/>
+                                Senior Planning and Design Analyst<br>
+                                Office of Smart Growth<br/>
+                                Phone: 215-238-2810<br/>
+                                Email: <a href="mailto:asvekla@dvrpc.org ">asvekla@dvrpc.org  </a> 
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
 
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>

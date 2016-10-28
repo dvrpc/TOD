@@ -23,6 +23,14 @@ color: #b0b0b0;
   margin-bottom: 5px;
   font-size: 16px;
 }
+#mapchart-main, #mapchart2-main {
+  width:90%;
+  overflow: hidden;
+}
+#mapdata-main, #mapdata2-main {
+  width:100%;
+  overflow: hidden;
+}
 #stationinfo_all{
   margin-left: 5px;
   padding-left: 15px;
@@ -41,17 +49,23 @@ color: #b0b0b0;
   padding-bottom: 15px;
   border-bottom: 0px transparent;
   margin-bottom: 0px;
+  color: #808080;
 }
 #cardpedpanel{
   border-color: #046f9e;
-  background-color:#DCDCDC;
+  background-color:#EFEFEF;
   display:none; 
   margin-left: 5px;
 }
 #cardped{
-  background-color:#046f9e;
+  background-color:#EFEFEF;
   border-color: #046f9e;
-  font-size: 14px;
+  padding-bottom: 15px;
+  border-bottom: 0px transparent;
+  margin-bottom: 0px;
+  color: #808080;
+}
+.cat-desc {
 }
 .map-legend {
     padding: 0px 0px;
@@ -137,12 +151,6 @@ color: #b0b0b0;
   -webkit-box-shadow: none;
     box-shadow: none;
 }
-#sidebar-hide-btn {
-  margin-top: -2px;
-}
-#aboutTabsContent {
-  padding-top: 10px;
-}
 .progress-bar-full {
   width: 100%;
 }
@@ -180,3 +188,9 @@ a.detaileddata{
   float:right; 
   display:inline-block;
 }
+.data-info {
+color: black;
+margin: 20px 0px 5px 15px;
+width: 450px;
+}
+

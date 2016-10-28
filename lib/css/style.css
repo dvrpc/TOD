@@ -1,4 +1,4 @@
-html,body,#sidebar,#container, #chart-sidebar {
+html,body,#sidebar,#container {
     height: 100%;
     margin: 0;
 }
@@ -23,7 +23,7 @@ label {
 /*--------  UI Element Color Styles  ---------------------*/
 /*------- Change to alter color theme  -------------------*/
 /*--------------------------------------------------------*/
-body, .landing, #sidebar, #chart-sidebar {
+body, .landing, #sidebar {
     background-color: #efefef !important;
 }
 .infowrap, .ofooter, .oheader {
@@ -113,7 +113,7 @@ h3 {
     color: #333;
 }
 /*--------------------------------------------------------*/
-/*--------  TOD Element Color Styles  ---------------------*/
+/*--------  TOD Home Page  Color Styles  ---------------------*/
 /*--------------------------------------------------------*/
 .TOD_city {
     width: 100%;
@@ -181,36 +181,22 @@ h3 {
 .hp-btn-upper {
     margin-bottom: 10px;
 }
-#chart-link {
-    color: #fff;
-}
-#chart-sidebar h3 {
-    color: #24abe2;
-    margin: 10px 0px 0px 10px;
-}
-#chart-info{
-    margin: 10px 0px 0px 10px;
-    font-size: 12px;
-}
-#tod1-graph{
-    height: 550px;
-}
-#cardbikepanel{
-  border-color: #046f9e;
-  background-color:#EFEFEF;
-  margin-left: 5px;
-}
-#cardbike{
-  background-color:#EFEFEF;
-  border-color: #046f9e;
-  padding-bottom: 15px;
-  border-bottom: 0px transparent;
-  margin-bottom: 0px;
-}
-#chartDIV {
-    height: 100%;
-   background-color: white;
+.hp-link {
+    color:white;
 }
 .btn-primary a{
     color: #fff;
+}
+.hpbanner {
+    box-shadow: 0 0 10px #27233C;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #396ab2;
+}
+.hpbanner h2, .hpbanner h3, .hpbanner h4 {
+    color: #fff !important;
+}
+.recentProjs > li > a {
+    color: #BBE6FA !important;
 }
