@@ -4,15 +4,19 @@ html,body,#sidebar,#container {
 }
 body {
     padding-top: 50px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  /*  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+  font-family:"Open Sans", sans-serif;
     overflow: auto;
 }
 p {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      /*  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+  font-family:"Open Sans", sans-serif;
+    font-size:13px;
 }
 h1,h2,h3,h4,h5,h6 {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 500;
+     /*  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+  font-family:"Open Sans", sans-serif;
+  font-weight: 500;
     line-height: 1.1;
     color: #24abe2;
 }
@@ -115,19 +119,19 @@ h3 {
 /*--------------------------------------------------------*/
 /*--------  TOD Home Page  Color Styles  ---------------------*/
 /*--------------------------------------------------------*/
-.TOD_city {
-    width: 100%;
-    height: 300px;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+#home {
+    margin-top:20px;
 }
 .homepage-data-overlay {
     position: absolute;
     right: 0;
     bottom: 0;
-    height: 520px;
-    width:100%;
+    height: auto;
+    max-width: 100%;
+    display: block; 
+  background-size: cover; /* or contain depending on what you want */
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .homepage-title {
     float: none;
@@ -136,12 +140,14 @@ h3 {
     border-bottom: 1px solid #ddd;
     background: url(images/header_bg.png) center 60% no-repeat no-repeat #dcdcdc;
     background-size: cover;
-    height: 470px;
+ /*   height: 470px; */
+    height: 560px;
 }
-.homepage-title h3, .hp-block-text {
+.homepage-title h3, .hp-block-text, #page1 h3 {
   /*  background-color: rgba(255,255,255,.75); */
     color: #24abe2;
-  /*  width:60%; */
+    font-size: 20px;
+    margin-top: 10px;
 }
 .hp-tool-links h3{
     color: #24abe2;
@@ -149,16 +155,18 @@ h3 {
 .tod-info {
     background-color: rgba(255,255,255,.85);
     color: black;
-     font-size: 12px;
+    font-size: 12px;
+    height: 510px;
 }
 .tod-method h3 {
-    background-color: #24abe2;
+  /*  background-color: rgba(36,171,226,.85); */
     color: white;
 }
 .tod-method{
-    background-color: #24abe2;
+    background-color: rgba(36,171,226,.85);
     color: white;
-    font-size: 12px;
+    font-size: 14px;
+    height:350px;
 }
 .hp-tool-links {
     background-color: #FFF;
@@ -192,11 +200,42 @@ h3 {
     color: #fff;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #396ab2;
+    background-color: #24abe2;
 }
 .hpbanner h2, .hpbanner h3, .hpbanner h4 {
     color: #fff !important;
 }
 .recentProjs > li > a {
     color: #BBE6FA !important;
+}
+#mi-export-overlay {
+    background: url(images/mapicon.png) no-repeat;
+    float: left;
+    top: 10px;
+    left: 15px;
+    width: 195px;
+    height: 87px;
+}
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: left;        /* adjust as needed */
+    color: #24abe2;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+#acorn {
+    margin-left: 10px;
+    color: #24abe2;
+}
+.panel-acorn {
+    border: none;
+    background: none;
+}
+#disclaimer {
+    margin-top: 15px;
 }

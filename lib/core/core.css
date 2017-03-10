@@ -101,7 +101,7 @@
 /*-----------------------------------------------*/
 /*-------------  Other UI Styles   --------------*/
 /*-----------------------------------------------*/
-.tooltip {
+/*.tooltip {
     z-index: 3000;
 }
 .tooltip-inner {
@@ -123,6 +123,7 @@
 .tooltip.right .tooltip-arrow {
     border-right-color: #212C3C;
 }
+*/
 .landing {
     z-index: 1029;
     width: 100%;
