@@ -7,13 +7,13 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="description" content="version 1.0.1">
         <meta name="author" content="Christopher Pollard, DVRPC">     
-        <title>Evaluating TOD Opportunities in Greater Philadelphia</title>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css">
+        <title>Evaluating TOD Opportunities in Greater Philadelphia - BETA</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" rel="stylesheet" type="text/css">
 
-        <link href="lib/assets/typeahead.min.css" rel="stylesheet" type="text/css">
+       <!-- <link rel="stylesheet" type="text/css" href="lib/assets/typeahead.min.css" > -->
         <link rel="stylesheet" href="lib/core/core.css">
         <link rel="stylesheet" href="lib/css/map.css" />
         <link rel="stylesheet" href="lib/css/leaflet_label.css">
@@ -74,21 +74,19 @@
                 }
             }
             @media (max-width: 1250px) {
-               .main-title {
-                    display: none;
+                .main-title {
                 }
             }
             @media (max-width: 960px) {
                .search-container {
                     display :none!important;
                 }
-            .btn-responsive {
-            padding:4px 9px;
-            font-size:90%;
-            line-height: 1.2;
-            margin-top: 10px;
-            } 
-
+                .btn-responsive {
+                padding:4px 9px;
+                font-size:90%;
+                line-height: 1.2;
+                margin-top: 10px;
+                } 
             }
             @media (max-width: 768px){
                 .search-container {
@@ -129,8 +127,9 @@
     </head>
 
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top oheader">
+     <div class="navbar navbar-inverse navbar-fixed-top oheader">
         <div class="navbar-header">
+            <img class="main-title visible-xs visible-sm visible-md" style="float: left;position: relative;width:90%;bottom: -15px;left: 20px;/* margin: 15px 0 0 30px; *//* margin:3px 0px 3px 30px; */" src="lib/images/banner_sm.png">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -141,12 +140,15 @@
             </div>
         </div>
         <div id="navbar-links" class="navbar-collapse collapse">
-            <span><img  class="main-title" style="margin:3px 0px 3px 30px" src="lib/images/banner.png"/></span>
+            <!-- Add a second "logo" image at a smaller size with just 
+    Building on our Strengths. Move these to the navbar brand container and then apply the following: -->
+            <span><img class="main-title2 hidden-xs hidden-sm hidden-md" style="margin:3px 0px 3px 30px" src="lib/images/banner.png"></span>
+                
             <ul id="landing" class="nav navbar-nav navbar-right" style="margin-top: 13px;">
-                <li class="landingLink"><a href="#home"  data-tab="home" data-toggle="collapse" data-target=".navbar-collapse.in">&nbsp;&nbsp;Home</a></li>
-                 <li class="landingLink"><a  href="http://www.dvrpc.org/TOD/" target="_new">TOD in the Region</a></li>
+                <li class="landingLink"><a href="#home" data-tab="home" data-toggle="collapse" data-target=".navbar-collapse.in">&nbsp;&nbsp;Home</a></li>
+                 <li class="landingLink"><a href="//www.dvrpc.org/TOD/" target="_new">TOD in the Region</a></li>
                 <li id="maplink" class="landingUI"><a href="#map" data-tab="map" data-toggle="collapse" data-target=".navbar-collapse.in">Map</a></li>
-                <a class="navbar-brand navbar-right" href="http://www.dvrpc.org/" target="_blank"><img src="http://www.dvrpc.org/webmaps/tcdi/images/dvrpc_logo.png" alt="DVRPC" style="max-height:30px;margin:10px 25px -10px 10px;"/></a>
+                <a class="navbar-brand navbar-right" href="//www.dvrpc.org/" target="_blank"><img src="lib/images/dvrpc_logo_small.png" alt="DVRPC" style="margin:7px 25px -10px 10px;"></a>
             </ul>
            
         </div><!--/.navbar-collapse -->
@@ -158,7 +160,7 @@
                     <!-- start homepage -->
                     <div class='homepage-title center-block col-lg-12'>
                         <div class='clearfix'>
-                        <img class='hidden-xs hidden-sm homepage-data-overlay' src='lib/images/TOD_city.jpg'>
+                        <img class='homepage-data-overlay' src='lib/images/TOD_city.jpg'>
                         <div class='center-block col-lg-12' style='float:none;display:flex;align-items:stretch'>
                             <div class="col-md-6 col-lg-6 tod-info">
                                 <h3>Transit-Oriented Development (TOD) is a way of building neighborhoods around high-quality transit stations.</h3> 
@@ -201,7 +203,8 @@
                             <div class="col-md-1 col-lg-1">
                             </div>   
                             <div class="col-md-5 col-lg-5 tod-method">
-                                <h3>Rating TOD Opportunities</h3>
+                               <span>
+                               <h3>Rating TOD Opportunities</h3>
                                 <p>DVRPC used 12 individual attributes divided into two categories to evaluate the TOD readiness of station areas throughout the region. To create an easily understood rating system, each factor was rated on a scale of one to four (with four being most supportive of TOD). Composite scores for each category were generated by averaging the scores of individual attributes within each category.<br><br>
                                 </p>
                                 <div class="row">
@@ -228,6 +231,7 @@
                                 </ul>               
                               </div>
                             </div>
+                        </span>
                             </div>   
                         </div>
                        </div> 
@@ -239,9 +243,9 @@
                          </div>
                          <div class='col-sm-12 col-md-5'>
                                 <div class="hp-tool-links">
-                                    <a href="http://www.dvrpc.org/TOD/" target="_new"><img  style="margin:5px 10px 0px 0px;float:left" src="lib/images/dvrpcicon.png"/></a>
+                                    <a href="//www.dvrpc.org/TOD/" target="_new"><img  style="margin:5px 10px 0px 0px;float:left" src="lib/images/dvrpcicon.png"/></a>
                                     <h3><span>&nbsp;&nbsp;TOD IN THE REGION</span></h3>
-                                    <p><a href="http://www.dvrpc.org/TOD/" target="_new">Learn more about DVRPC's efforts to promote TOD in the Greater Philadelphia region.</a></p>
+                                    <p><a href="//www.dvrpc.org/TOD/" target="_new">Learn more about DVRPC's efforts to promote TOD in the Greater Philadelphia region.</a></p>
                                 </div>
                             </div>
                         <div class='col-sm-12 col-md-5'>
@@ -361,7 +365,7 @@
             <div style="height:45px;color:white;margin-top:3px">
                 <!-- Landing Footer -->
                 <div id="LandingFooter" class="center">
-                   	<p>Evaluating TOD Opportunities in Greater Philadelphia ( BETA Version )&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#disclaimer" class="hp-link">&nbsp;&nbsp;Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#disclaimer" class="hp-link">&nbsp;&nbsp;Contact</a></p>
+                   	<p>Evaluating TOD Opportunities in Greater Philadelphia&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#disclaimer" class="hp-link">&nbsp;&nbsp;Disclaimer</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#disclaimer" class="hp-link">&nbsp;&nbsp;Contact</a></p>
                 </div>  
             </div>
         </div> 
@@ -682,10 +686,10 @@
               <div class="modal-content">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title modal-legend">Evaluating TOD Opportunities in Greater Philadelphia ( BETA Version ) </h4>
+                      <h4 class="modal-title modal-legend">Evaluating TOD Opportunities in Greater Philadelphia</h4>
                   </div>
                   <div class="modal-body">
-                            <p>Welcome to the Beta Version of Evaluating TOD Opportunities in Greater Philadelphia. This application is designed to complement DVRPC’s forthcoming report titled Building on our Strengths: Evaluating TOD Opportunities in Greater Philadelphia. Both the report and the application are designed to  identify potential opportunities for public and private investment near rail stations in the region. Please contact Andrew Svekla at <a href="mailto:asvekla@dvrpc.org ">asvekla@dvrpc.org  </a>  with any comments or questions about this effort.</p> 
+                            <p>Welcome to Evaluating TOD Opportunities in Greater Philadelphia. This application is designed to complement DVRPC’s report titled <a href="https://www.dvrpc.org/Reports/16036.pdf" target="_new">Building on our Strengths: Evaluating TOD Opportunities in Greater Philadelphia</a>. Both the report and the application are designed to  identify potential opportunities for public and private investment near rail stations in the region. Please contact Andrew Svekla at <a href="mailto:asvekla@dvrpc.org ">asvekla@dvrpc.org  </a>  with any comments or questions about this effort.</p> 
                   </div><!-- /.modal-body -->
               </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -693,9 +697,9 @@
 <!-- end Category Modal -->
 
 
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="https://code.highcharts.com/highcharts.js"></script>
 
         <script type="text/javascript" src="lib/assets/numeral.min.js"></script> 

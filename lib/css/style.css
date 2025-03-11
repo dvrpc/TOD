@@ -129,9 +129,9 @@ h3 {
     height: auto;
     max-width: 100%;
     display: block; 
-  background-size: cover; /* or contain depending on what you want */
-  background-position: center center;
-  background-repeat: no-repeat;
+    background-size: cover; /* or contain depending on what you want */
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .homepage-title {
     float: none;
@@ -152,11 +152,17 @@ h3 {
 .hp-tool-links h3{
     color: #24abe2;
 }
+.hp-tool-links {
+    min-height:110px; /*fixes the icon margin on home page cards */
+}
 .tod-info {
     background-color: rgba(255,255,255,.85);
     color: black;
     font-size: 12px;
     height: 510px;
+    overflow-y:auto;
+}
+#collapseTwo{ 
 }
 .tod-method h3 {
   /*  background-color: rgba(36,171,226,.85); */
@@ -166,7 +172,8 @@ h3 {
     background-color: rgba(36,171,226,.85);
     color: white;
     font-size: 14px;
-    height:350px;
+    height:370px;
+    overflow-y:auto;
 }
 .hp-tool-links {
     background-color: #FFF;
